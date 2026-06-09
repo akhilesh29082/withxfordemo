@@ -1148,7 +1148,7 @@ input:focus,textarea:focus{
     display:none !important;
   }
 
-  .nav-right::before{
+  /* .nav-right::before{
     content:"🔍";
     font-size:22px;
     color:#111;
@@ -1159,7 +1159,7 @@ input:focus,textarea:focus{
     content:"☰";
     font-size:26px;
     color:#111;
-  }
+  } */
 
   .hero{
     margin-top:58px !important;
@@ -1244,6 +1244,19 @@ input:focus,textarea:focus{
 
 
 
+
+/* GENERATED MOBILE MENU PATCH */
+.menu-btn{display:none;background:none;border:none;font-size:30px;cursor:pointer;color:#111;padding:0;line-height:1}
+.mobile-menu{position:fixed;top:58px;left:0;width:100%;background:#fff;display:none;flex-direction:column;z-index:5000;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.mobile-menu a{padding:18px 24px;text-decoration:none;color:#111;border-bottom:1px solid #eee;font-weight:600}
+.mobile-menu.show{display:flex}
+@media (max-width:768px){
+.nav-links{display:none !important}
+.ask-btn{display:none !important}
+.nav-right a[href="about.html"]{display:none !important}
+.menu-btn{display:block}
+}
+
 </style>
 </head>
 <body>
@@ -1268,11 +1281,20 @@ input:focus,textarea:focus{
     </div>
   </div>
 
-  <div class="nav-right">
+  <div class="nav-right"><button id="menuBtn" class="menu-btn">☰</button>
     <a class="ask-btn" href="contact.html">Ask WITHX</a>
     <a href="about.html">About</a>
   </div>
 </nav>
+<div id="mobileMenu" class="mobile-menu">
+<a href="index.html">Home</a>
+<a href="services.html">Services</a>
+<a href="products.html">Products</a>
+<a href="projects.html">Projects</a>
+<a href="research.html">Research</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+</div>
 <div class="hero" id="home">
   <canvas id="waveCanvas" class="hero-wave-canvas"></canvas>
   <div class="hero-inner">
@@ -1314,7 +1336,7 @@ input:focus,textarea:focus{
     </div>
     <div class="card" onclick="window.location.href='services.html'" style="cursor:pointer;">
       <img class="card-image" src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1200&q=80" alt="Research and development">
-      <div>🔬 <strong>Research &amp; Development</strong></div>
+      <div>🔬 <strong>Research & amp; Development</strong></div>
       <div style="color:var(--muted);margin-top:10px;">Research-backed exploration, concept refinement, and technical innovation.</div>
     </div>
     <div class="card" onclick="window.location.href='services.html'" style="cursor:pointer;">
@@ -1539,7 +1561,7 @@ View Product
       <h3>WITHX INNOVATIONS</h3>
       <p>
         WITHX Innovations Private Limited is an engineering-driven company
-        focused on research &amp; development, manufacturing solutions,
+        focused on research & amp; development, manufacturing solutions,
         industrial design, product innovation and advanced technology development.
       </p>
     </div>
@@ -1779,6 +1801,16 @@ console.assert(document.querySelectorAll('.hero-bg-slide').length > 0, 'Hero bac
 
 
 
+
+
+<script>
+const menuBtn=document.getElementById('menuBtn');
+const mobileMenu=document.getElementById('mobileMenu');
+if(menuBtn&&mobileMenu){
+menuBtn.addEventListener('click',()=>mobileMenu.classList.toggle('show'));
+document.querySelectorAll('#mobileMenu a').forEach(a=>a.addEventListener('click',()=>mobileMenu.classList.remove('show')));
+}
+</script>
 
 </body>
 </html>
