@@ -1137,7 +1137,6 @@ input:focus,textarea:focus{
   <div class="nav-left">
     <a class="brand" href="index.html" aria-label="WITHX Home">
       <span class="brand-logo-box"><img src="https://i.ibb.co/BVTS9KXY/image-removebg-preview-4.png" alt="WITHX Logo"></span>
-      <span class="brand-text">WITHX</span>
     </a>
 
     <div class="nav-links">
@@ -1353,32 +1352,65 @@ View Product
 <section id="contact-panel">
 
   <div class="grid contact-grid">
+
     <div class="card">
-      <div class="title" style="font-size:clamp(1.8rem,3vw,2.8rem);margin-bottom:10px;">Contact WITHX</div>
-      <p style="color:var(--muted);margin-bottom:22px;line-height:1.8;">Let’s discuss products, collaborations, prototypes, and engineering innovation opportunities.</p>
-      <form action="https://formsubmit.co/yourcompanyemail@example.com" method="POST">
+
+      <div class="title" style="font-size:clamp(1.8rem,3vw,2.8rem);margin-bottom:10px;">
+        Contact WITHX
+      </div>
+
+      <p style="color:var(--muted);margin-bottom:22px;line-height:1.8;">
+        Let's discuss products, collaborations, prototypes, and engineering innovation opportunities.
+      </p>
+
+      <form action="https://formsubmit.co/withx.innovations@gmail.com" method="POST">
+
+        <!-- FormSubmit Settings -->
         <input type="hidden" name="_subject" value="New WITHX Website Message">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
-        <input class="form-control" type="text" name="name" placeholder="Your Name" required>
-        <input class="form-control" type="email" name="email" placeholder="Your Email" required>
-        <textarea class="form-control" name="message" placeholder="Your Message" required></textarea>
-        <button class="btn" type="submit">Send Message</button>
+
+        <!-- Redirect after successful submission -->
+        <input type="hidden" name="_next" value="https://withx.in">
+
+        <!-- Name -->
+        <input
+          class="form-control"
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          required
+        >
+
+        <!-- Email -->
+        <input
+          class="form-control"
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          required
+        >
+
+        <!-- Message -->
+        <textarea
+          class="form-control"
+          name="message"
+          placeholder="Your Message"
+          rows="6"
+          required
+        ></textarea>
+
+        <!-- Submit Button -->
+        <button class="btn" type="submit">
+          Send Message
+        </button>
+
       </form>
+
     </div>
 
-    <div class="card">
-      <img class="card-image" src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80" alt="Office and collaboration">
-      <strong style="font-size:1.15rem;display:block;margin-bottom:12px;">Pune, Maharashtra</strong>
-      <p style="color:var(--muted);line-height:1.8;margin-bottom:18px;">WITHX Innovations Private Limited creates practical engineering solutions across research, manufacturing, and smart product development.</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        <a class="tag" href="https://www.linkedin.com/company/withx-innovations/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="tag" href="https://www.instagram.com/withx.in?igsh=MWJuNDR4dmxiZDJh" target="_blank" rel="noopener">Instagram</a>
-        <a class="tag" href="https://youtube.com/@withxinnovation?si=sRdB0OaLzHoDtcV5" target="_blank" rel="noopener">YouTube</a>
-        <a class="tag" href="mailto:yourcompanyemail@example.com">Email</a>
-      </div>
-    </div>
   </div>
+
 </section>
 <footer class="footer">
 
@@ -1627,76 +1659,6 @@ console.assert(document.querySelectorAll('.hero-bg-slide').length > 0, 'Hero bac
 </script>
 
 
-
-<!-- WITHX AI Chatbot -->
-<div class="withx-chat-btn" onclick="toggleWithxChat()">
-    💬
-</div>
-
-<div class="withx-chatbox" id="withxChatbox">
-    <div class="withx-chat-header">
-        WITHX AI Assistant
-        <span onclick="toggleWithxChat()" style="cursor:pointer;">✕</span>
-    </div>
-
-    <div class="withx-chat-body" id="chatBody">
-        <div class="bot-msg">
-            Hello! Welcome to WITHX Innovations.<br>
-            How can I help you today?
-        </div>
-    </div>
-
-    <div class="withx-chat-input">
-        <input type="text" id="userMessage" placeholder="Ask your question..." />
-        <button onclick="sendMessage()">Send</button>
-    </div>
-</div>
-
-
-<script>
-function toggleWithxChat(){
-  const chat = document.getElementById("withxChatbox");
-  chat.style.display =
-    chat.style.display === "block" ? "none" : "block";
-}
-
-function sendMessage(){
-  const input = document.getElementById("userMessage");
-  const text = input.value.trim();
-
-  if(!text) return;
-
-  const chatBody = document.getElementById("chatBody");
-
-  chatBody.innerHTML += `
-    <div class="user-msg">${text}</div>
-  `;
-
-  let reply =
-    "Thank you for contacting WITHX. Our team will assist you shortly.";
-
-  if(text.toLowerCase().includes("product")){
-      reply="You can explore our products section for detailed information.";
-  }
-
-  if(text.toLowerCase().includes("contact")){
-      reply="You can contact WITHX via email or the contact form.";
-  }
-
-  if(text.toLowerCase().includes("service")){
-      reply="WITHX provides R&D, Manufacturing, Prototype Development and Industrial Design services.";
-  }
-
-  setTimeout(()=>{
-      chatBody.innerHTML += `
-        <div class="bot-msg">${reply}</div>
-      `;
-      chatBody.scrollTop = chatBody.scrollHeight;
-  },500);
-
-  input.value="";
-}
-</script>
 
 
 </body>
