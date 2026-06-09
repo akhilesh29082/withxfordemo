@@ -449,6 +449,20 @@ footer{
   .hero{min-height:60vh;padding-bottom:40px}
   .hero h1{font-size:2.5rem}
 }
+
+/* MOBILE MENU PATCH */
+.menu-btn{display:none;background:none;border:none;font-size:30px;cursor:pointer;color:#fff;padding:0;line-height:1}
+.mobile-menu{position:fixed;top:88px;left:0;width:100%;background:#0b0d10;display:none;flex-direction:column;z-index:5000}
+.mobile-menu a{padding:18px 24px;text-decoration:none;color:#fff;border-bottom:1px solid rgba(255,255,255,.08);font-weight:600}
+.mobile-menu.show{display:flex}
+@media(max-width:900px){
+  .nav-links{display:none !important}
+  .ask-btn,.nav-right>a[href="about.html"]{display:none !important}
+  .menu-btn{display:block}
+  .top-navbar{flex-direction:row !important;align-items:center !important}
+  .nav-left,.nav-right{width:auto !important;flex-direction:row !important}
+}
+
 </style>
 </head>
 <body>
@@ -460,7 +474,6 @@ footer{
   <div class="nav-left">
     <a class="brand" href="index.html" aria-label="WITHX Home">
       <span class="brand-logo-box"><img src="https://i.ibb.co/BVTS9KXY/image-removebg-preview-4.png" alt="WITHX Logo"></span>
-      <span class="brand-text">WITHX</span>
     </a>
 
     <div class="nav-links">
@@ -468,16 +481,24 @@ footer{
       <a href="services.html">Services</a>
       <a href="products.html">Products</a>
       <a href="projects.html">Projects</a>
-      <a href="research.html">Research</a>
-      <a href="contact.html">Contact</a>
+      <a href="research.html">Research</a>      <a href="contact.html">Contact</a>
     </div>
   </div>
 
-  <div class="nav-right">
+  <div class="nav-right"><button id="menuBtn" class="menu-btn">☰</button>
     <a class="ask-btn" href="contact.html">Ask WITHX</a>
     <a href="about.html">About</a>
   </div>
 </nav>
+<div id="mobileMenu" class="mobile-menu">
+<a href="index.html">Home</a>
+<a href="services.html">Services</a>
+<a href="products.html">Products</a>
+<a href="projects.html">Projects</a>
+<a href="research.html">Research</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+</div>
 
 <section class="hero">
 <div class="hero-inner" id="heroInner">
@@ -485,8 +506,6 @@ footer{
 <p>Innovation-driven products designed for efficiency, safety, and practical real-world use.</p>
 <div class="hero-cards">
   <div class="hero-mini-card"><strong>4 Products</strong><span>Focused innovation lineup</span></div>
-  <div class="hero-mini-card"><strong>Buy Now</strong><span>Connected with Google Form</span></div>
-  <div class="hero-mini-card"><strong>Company Orders</strong><span>Sent to your company form/email workflow</span></div>
 </div>
 </div>
 </section>
@@ -509,10 +528,6 @@ footer{
         <span>Multi-use concept</span>
         <span>Efficiency-oriented design</span>
       </div>
-      <div class="button-row">
-        <a class="btn" target="_blank" rel="noopener" href="https://docs.google.com/forms/d/e/YOUR_GOOGLE_FORM_ID/viewform?usp=pp_url&entry.PRODUCT_FIELD=Multifunctional+Utensil+Cleaner">Buy Now</a>
-        <button class="btn secondary" data-product="Multifunctional Utensil Cleaner" data-desc="A utility-focused product concept created to improve everyday cleaning convenience and efficiency." data-features="Practical cleaning support|Multi-use concept|Efficiency-oriented design">View Details</button>
-      </div>
     </div>
   </div>
 
@@ -527,10 +542,6 @@ footer{
         <span>Consistency-focused concept</span>
         <span>Helps reduce manual effort</span>
         <span>Operational efficiency support</span>
-      </div>
-      <div class="button-row">
-        <a class="btn" target="_blank" rel="noopener" href="https://docs.google.com/forms/d/e/YOUR_GOOGLE_FORM_ID/viewform?usp=pp_url&entry.PRODUCT_FIELD=Wada+Maker+Machine">Buy Now</a>
-        <button class="btn secondary" data-product="Wada Maker Machine" data-desc="A food-process innovation concept focused on improving consistency, speed, and ease of operation." data-features="Consistency-focused concept|Helps reduce manual effort|Operational efficiency support">View Details</button>
       </div>
     </div>
   </div>
@@ -547,10 +558,6 @@ footer{
         <span>Safety-oriented system thinking</span>
         <span>Protection-driven innovation</span>
       </div>
-      <div class="button-row">
-        <a class="btn" target="_blank" rel="noopener" href="https://docs.google.com/forms/d/e/YOUR_GOOGLE_FORM_ID/viewform?usp=pp_url&entry.PRODUCT_FIELD=Driver+Rescue+System">Buy Now</a>
-        <button class="btn secondary" data-product="Driver Rescue System" data-desc="A safety-centered engineering product concept developed to support rescue response and protection-oriented use cases." data-features="Emergency support concept|Safety-oriented system thinking|Protection-driven innovation">View Details</button>
-      </div>
     </div>
   </div>
 
@@ -566,22 +573,18 @@ footer{
         <span>Convenient daily-use support</span>
         <span>Smart locking approach</span>
       </div>
-      <div class="button-row">
-        <a class="btn" target="_blank" rel="noopener" href="https://docs.google.com/forms/d/e/YOUR_GOOGLE_FORM_ID/viewform?usp=pp_url&entry.PRODUCT_FIELD=Helmet+Locking+System">Buy Now</a>
-        <button class="btn secondary" data-product="Helmet Locking System" data-desc="A smart product concept created to improve helmet safety, storage convenience, and everyday user security." data-features="Security-focused concept|Convenient daily-use support|Smart locking approach">View Details</button>
-      </div>
     </div>
   </div>
 
 </div>
-
+<!-- 
 <div class="buy-note">
   <strong>Important setup:</strong> To make orders go to your company workflow, replace <code>YOUR_GOOGLE_FORM_ID</code> and <code>entry.PRODUCT_FIELD</code> in each Buy Now link with your actual Google Form ID and product field entry ID. Once connected, every Buy Now click opens your Google Form and submissions will be stored in the Google Form responses linked to your company email and spreadsheet.
-</div>
+</div> -->
 </section>
 
 <section class="section cta">
-<h2>Need help choosing the right product?</h2>
+<h2>Need help choosing the right product?</h2><br><br>
 <a class="btn" href="contact.html">Contact Us</a>
 </section>
 
@@ -676,5 +679,17 @@ modal.addEventListener('click', (event) => {
   }
 });
 </script>
+
+<script>
+const menuBtn=document.getElementById('menuBtn');
+const mobileMenu=document.getElementById('mobileMenu');
+if(menuBtn && mobileMenu){
+ menuBtn.addEventListener('click',()=>mobileMenu.classList.toggle('show'));
+ document.querySelectorAll('#mobileMenu a').forEach(a=>{
+   a.addEventListener('click',()=>mobileMenu.classList.remove('show'));
+ });
+}
+</script>
+
 </body>
 </html>
