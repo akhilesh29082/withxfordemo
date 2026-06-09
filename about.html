@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About WITHX Innovations</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter,sans-serif;
+}
+
+:root{
+  --primary:#0a1f44;
+  --secondary:#f1f5f9;
+  --accent:#38bdf8;
+  --text:#111827;
+  --muted:#475569;
+  --panel:rgba(255,255,255,.72);
+  --panel-border:rgba(10,31,68,.08);
+  --max:1280px;
+}
+
+html{scroll-behavior:smooth;}
+body{
+  background:linear-gradient(180deg,#f8fbff 0%, #eaf1f8 100%);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:url('https://www.transparenttextures.com/patterns/noise.png');
+  opacity:.04;
+  pointer-events:none;
+  z-index:0;
+}
+
+.orb{
+  position:fixed;
+  border-radius:50%;
+  filter:blur(120px);
+  opacity:.18;
+  z-index:0;
+  animation:float 12s ease-in-out infinite;
+}
+.orb1{width:340px;height:340px;background:#7dd3fc;top:6%;left:-4%;}
+.orb2{width:260px;height:260px;background:#bfdbfe;top:38%;right:2%;animation-delay:2s;}
+.orb3{width:220px;height:220px;background:#93c5fd;bottom:8%;left:38%;animation-delay:4s;}
+
+@keyframes float{
+  0%,100%{transform:translateY(0) translateX(0)}
+  50%{transform:translateY(-24px) translateX(14px)}
+}
+
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 34px;
+  background:rgba(255,255,255,.84);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(0,0,0,.05);
+  z-index:1000;
+}
+nav .logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+nav .logo img{
+  height:38px;
+}
+nav b{letter-spacing:.08em;font-size:.95rem;color:var(--primary);}
+nav a{
+  margin-left:16px;
+  text-decoration:none;
+  color:var(--text);
+  opacity:.75;
+  transition:.3s;
+  font-size:.95rem;
+}
+nav a:hover{color:var(--accent);opacity:1;}
+
+.hero{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:130px 20px 60px;
+  position:relative;
+  overflow:hidden;
+}
+.hero-grid{
+  width:min(var(--max),100%);
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:46px;
+  align-items:center;
+  position:relative;
+  z-index:2;
+}
+.hero-copy{
+  background:rgba(255,255,255,.72);
+  border:1px solid var(--panel-border);
+  border-radius:30px;
+  padding:34px;
+  backdrop-filter:blur(16px);
+  box-shadow:0 24px 60px rgba(10,31,68,.08);
+}
+.hero-kicker{
+  display:inline-block;
+  padding:10px 16px;
+  border-radius:999px;
+  background:rgba(56,189,248,.12);
+  border:1px solid rgba(56,189,248,.22);
+  color:#0369a1;
+  font-size:.82rem;
+  font-weight:600;
+  margin-bottom:18px;
+}
+.hero h1{
+  font-size:clamp(3rem,6vw,5.3rem);
+  line-height:1;
+  letter-spacing:-.04em;
+  color:var(--primary);
+  max-width:9ch;
+  margin-bottom:18px;
+}
+.hero p{
+  max-width:38rem;
+  color:var(--muted);
+  line-height:1.85;
+  font-size:1.06rem;
+}
+.hero-stat-row{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+  margin-top:28px;
+}
+.hero-stat{
+  background:rgba(255,255,255,.6);
+  border:1px solid var(--panel-border);
+  border-radius:18px;
+  padding:16px;
+}
+.hero-stat b{
+  display:block;
+  color:var(--primary);
+  font-size:1.1rem;
+  margin-bottom:6px;
+}
+.hero-stat span{
+  color:var(--muted);
+  font-size:.92rem;
+}
+.hero-visual{
+  position:relative;
+  min-height:620px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.hero-frame{
+  width:min(580px,100%);
+  aspect-ratio:1/1.1;
+  border-radius:34px;
+  overflow:hidden;
+  position:relative;
+  border:1px solid rgba(10,31,68,.08);
+  box-shadow:0 28px 80px rgba(10,31,68,.12);
+}
+.hero-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.hero-frame::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(10,31,68,.08));
+}
+.float-card{
+  position:absolute;
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(16px);
+  border:1px solid var(--panel-border);
+  box-shadow:0 18px 40px rgba(10,31,68,.10);
+  border-radius:24px;
+  padding:18px;
+}
+.float-card.top{
+  top:8%;
+  right:-2%;
+  width:220px;
+}
+.float-card.bottom{
+  bottom:8%;
+  left:-2%;
+  width:250px;
+}
+.float-card small{
+  color:#0369a1;
+  display:block;
+  margin-bottom:8px;
+}
+.float-card strong{
+  color:var(--primary);
+  line-height:1.45;
+}
+
+section{
+  width:min(var(--max), calc(100% - 40px));
+  margin:0 auto;
+  padding:100px 0;
+  position:relative;
+  z-index:2;
+  opacity:0;
+  transform:translateY(60px);
+  transition:all .9s ease;
+}
+section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.title{
+  font-size:clamp(2rem,4vw,3.4rem);
+  font-weight:800;
+  color:var(--primary);
+  margin-bottom:14px;
+  letter-spacing:-.03em;
+}
+.lead{
+  color:var(--muted);
+  line-height:1.9;
+  max-width:760px;
+}
+.glass{
+  background:var(--panel);
+  border:1px solid var(--panel-border);
+  border-radius:28px;
+  backdrop-filter:blur(16px);
+  box-shadow:0 24px 60px rgba(10,31,68,.08);
+}
+.editorial-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+  align-items:stretch;
+}
+.alt-grid{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:28px;
+  align-items:stretch;
+}
+.stacked-cards{
+  display:grid;
+  gap:20px;
+}
+.metric-strip{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+  margin-top:28px;
+}
+.metric-card{
+  padding:22px;
+}
+.metric-card b{
+  display:block;
+  color:var(--primary);
+  font-size:1.15rem;
+  margin-bottom:8px;
+}
+.metric-card span{
+  color:var(--muted);
+  line-height:1.7;
+  font-size:.95rem;
+}
+.story-block{
+  padding:34px;
+}
+.story-block p{
+  color:var(--muted);
+  line-height:1.9;
+}
+.story-image{
+  overflow:hidden;
+  min-height:460px;
+}
+.story-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.mission-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  margin-top:34px;
+}
+.mission-card{
+  padding:30px;
+}
+.mission-card h3{
+  color:var(--primary);
+  font-size:1.5rem;
+  margin-bottom:12px;
+}
+.mission-card p{
+  color:var(--muted);
+  line-height:1.9;
+}
+.values-grid{
+  margin-top:30px;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:22px;
+}
+.values-feature{
+  padding:34px;
+  min-height:100%;
+}
+.values-stack{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+.value-card{
+  padding:28px 22px;
+  text-align:center;
+  transition:.35s ease;
+}
+.value-card .icon{
+  font-size:2rem;
+  margin-bottom:12px;
+}
+.value-card h4{
+  color:var(--primary);
+  margin-bottom:10px;
+  font-size:1.08rem;
+}
+.value-card p{
+  color:var(--muted);
+  line-height:1.7;
+  font-size:.94rem;
+}
+.value-card:hover{
+  transform:translateY(-10px);
+  border-color:rgba(56,189,248,.30);
+}
+.founder-layout{
+  display:grid;
+  grid-template-columns:.82fr 1.18fr;
+  gap:34px;
+  align-items:stretch;
+}
+.founder-portrait-wrap{
+  position:relative;
+}
+.founder-bg-shape{
+  position:absolute;
+  inset:auto 8% 6% auto;
+  width:180px;
+  height:180px;
+  border-radius:32px;
+  background:linear-gradient(180deg, rgba(56,189,248,.18), rgba(56,189,248,.06));
+  border:1px solid rgba(56,189,248,.18);
+  filter:blur(.2px);
+  z-index:1;
+  transform:rotate(10deg);
+}
+.founder-accent-line{
+  position:absolute;
+  left:-18px;
+  top:28px;
+  bottom:28px;
+  width:6px;
+  border-radius:999px;
+  background:linear-gradient(180deg, #38bdf8, #0ea5e9);
+  z-index:3;
+  box-shadow:0 10px 30px rgba(56,189,248,.18);
+}
+.founder-image{
+  min-height:620px;
+  overflow:hidden;
+  position:relative;
+  z-index:2;
+}
+.founder-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center top;
+}
+.founder-card{
+  padding:42px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.founder-tag{
+  display:inline-block;
+  padding:10px 16px;
+  border-radius:999px;
+  background:rgba(56,189,248,.12);
+  border:1px solid rgba(56,189,248,.22);
+  color:#0369a1;
+  font-size:.82rem;
+  font-weight:600;
+  margin-bottom:18px;
+}
+.founder-card h2{
+  color:var(--primary);
+  font-size:clamp(2rem,4vw,3.2rem);
+  line-height:1.05;
+  margin-bottom:10px;
+}
+.founder-role{
+  color:#0369a1;
+  font-weight:600;
+  margin-bottom:16px;
+}
+.founder-card p{
+  color:var(--muted);
+  line-height:1.95;
+  margin-bottom:16px;
+}
+.quote-strip{
+  margin-top:18px;
+  padding:20px 22px;
+  border-radius:20px;
+  background:rgba(56,189,248,.08);
+  border:1px solid rgba(56,189,248,.20);
+  color:var(--primary);
+  font-weight:600;
+  line-height:1.7;
+}
+footer{
+  margin-top:10px;
+  padding:40px 20px 60px;
+  border-top:1px solid rgba(10,31,68,.08);
+  background:rgba(255,255,255,.7);
+  text-align:center;
+  color:var(--muted);
+  position:relative;
+  z-index:2;
+}
+
+@media (max-width: 980px){
+  .hero-grid,
+  .editorial-grid,
+  .alt-grid,
+  .mission-layout,
+  .founder-layout,
+  .values-grid{
+    grid-template-columns:1fr;
+  }
+  .hero-copy{text-align:center;}
+  .hero h1{max-width:none;}
+  .hero-stat-row,
+  .metric-strip{grid-template-columns:1fr;}
+  .hero-visual{min-height:500px;}
+  .float-card.top{right:4%;}
+  .float-card.bottom{left:4%;}
+  .values-stack{grid-template-columns:1fr 1fr;}
+  .founder-image{min-height:520px;}
+  .founder-accent-line{display:none;}
+}
+
+@media (max-width: 720px){
+  nav{
+    padding:14px 18px;
+    gap:10px;
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  nav div:last-child{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  nav a{margin-left:0;font-size:.88rem;}
+  .hero{padding-top:150px;}
+  .hero-copy,
+  .story-block,
+  .mission-card,
+  .founder-card,
+  .values-feature,
+  .metric-card{padding:24px 20px;}
+  .values-stack{grid-template-columns:1fr;}
+  .float-card{
+    position:relative;
+    inset:auto;
+    margin-top:14px;
+    width:100%;
+  }
+}
+
+@media (max-width: 720px){
+  nav{
+    padding:14px 18px;
+    gap:10px;
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  nav div:last-child{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  nav a{margin-left:0;font-size:.88rem;}
+  .hero{padding-top:150px;}
+  .hero-copy,
+  .story-block,
+  .mission-card,
+  .founder-card{padding:24px 20px;}
+  .values-grid{grid-template-columns:1fr;}
+  .float-card{
+    position:relative;
+    inset:auto;
+    margin-top:14px;
+    width:100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<nav>
+  <div class="logo">
+    <img src="https://i.ibb.co/BVTS9KXY/image-removebg-preview-4.png" alt="WITHX Logo">
+  </div>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="products.html">Products</a>
+    <a href="projects.html">Projects</a>
+    <a href="research.html">Research</a>
+  
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<section class="hero show">
+  <div class="hero-grid">
+    <div class="hero-copy glass">
+      <div class="hero-kicker">About WITHX Innovations</div>
+      <h1>Building engineering ideas with purpose and innovation.</h1>
+      <p>WITHX Innovations Private Limited is an engineering-driven company focused on transforming ideas into practical products, systems, and real-world solutions. Our work brings together innovation, research, industrial design, and execution to solve meaningful problems with a startup mindset and technical depth.</p>
+      <div class="hero-stat-row">
+        <div class="hero-stat"><b>Innovation-Led</b><span>Ideas shaped through research and practical application.</span></div>
+        <div class="hero-stat"><b>Founder-Driven</b><span>Built with passion, experimentation, and real execution.</span></div>
+        <div class="hero-stat"><b>Future-Focused</b><span>Creating scalable engineering solutions with impact.</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-frame glass">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80" alt="Creative engineering team discussion">
+      </div>
+      <div class="float-card top">
+        <small>Company mindset</small>
+        <strong>Innovation, execution, and product thinking rooted in engineering.</strong>
+      </div>
+      <div class="float-card bottom">
+        <small>Built around</small>
+        <strong>Manufacturing, research, prototype development, and industrial design.</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section>
+  <div class="editorial-grid">
+    <div class="story-image glass">
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80" alt="Innovation workspace">
+    </div>
+    <div class="story-block glass">
+      <div class="title">Company History</div>
+      <p>WITHX began as an idea shaped by curiosity, creativity, and the desire to solve real-world problems through engineering. It grew from a founder-led journey of exploring innovation not only as an academic pursuit, but as a practical force that can improve systems, products, and everyday experiences.</p>
+      <br>
+      <p>What started with a student innovator’s determination gradually evolved into a startup vision. Through experiments, concepts, patent-focused thinking, and a commitment to execution, WITHX developed into a company built around product innovation, engineering value, and long-term impact.</p>
+      <br>
+      <p>The journey reflects a strong entrepreneurial mindset: starting small, thinking big, and consistently translating engineering ideas into tangible opportunities.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="title">Mission & Vision</div>
+  <p class="lead">The foundation of WITHX is built on clarity of purpose, innovation-driven problem solving, and a commitment to designing engineering solutions that matter.</p>
+  <div class="mission-layout">
+    <div class="mission-card glass">
+      <h3>Mission</h3>
+      <p>To design, develop, and deliver practical engineering solutions that solve real-world problems through innovation, research, and purposeful product development. WITHX aims to create systems and products that are functional, impactful, and aligned with the future of engineering and industry.</p>
+    </div>
+    <div class="mission-card glass">
+      <h3>Vision</h3>
+      <p>To become a respected and globally recognized engineering innovation company known for building original products, meaningful technology, and future-ready solutions. The vision is to shape a brand that stands for smart innovation, engineering excellence, and positive real-world impact.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="title">Core Values</div>
+  <p class="lead">The values of WITHX define how ideas are approached, how solutions are developed, and how the company continues to grow with integrity and purpose.</p>
+  <div class="values-grid">
+    <div class="values-feature glass">
+      <div class="title" style="font-size:clamp(1.8rem,3vw,2.5rem);margin-bottom:12px;">What drives WITHX</div>
+      <p class="lead" style="max-width:none;">WITHX is built on a foundation of curiosity, technical discipline, and meaningful problem solving. These values shape the way the company thinks, designs, and executes.</p>
+    </div>
+    <div class="values-stack">
+      <div class="value-card glass">
+        <div class="icon">🚀</div>
+        <h4>Innovation</h4>
+        <p>We believe in original thinking and pushing ideas beyond the ordinary.</p>
+      </div>
+      <div class="value-card glass">
+        <div class="icon">⚙️</div>
+        <h4>Engineering Excellence</h4>
+        <p>We value precision, practicality, and strong technical foundations in every solution.</p>
+      </div>
+      <div class="value-card glass">
+        <div class="icon">💡</div>
+        <h4>Creativity</h4>
+        <p>We embrace imagination as a core force behind impactful engineering design.</p>
+      </div>
+      <div class="value-card glass">
+        <div class="icon">🤝</div>
+        <h4>Integrity</h4>
+        <p>We work with honesty, commitment, and responsibility in how we build and grow.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="founder-layout">
+    <div class="founder-portrait-wrap">
+      <div class="founder-bg-shape"></div>
+      <div class="founder-accent-line"></div>
+      <div class="founder-image glass">
+        <img src="https://i.ibb.co/Y4b5tYSc/image.png" alt="Sharad Ashruba Waybase portrait">
+      </div>
+    </div>
+    <div class="founder-card glass">
+      <div class="founder-tag">Founder Spotlight</div>
+      <h2>Sharad Ashruba Waybase</h2>
+      <div class="founder-role">Mechanical Engineering Student · Patent Holder · Startup Founder</div>
+      <p>Sharad Ashruba Waybase represents the spirit of young engineering entrepreneurship. As a Mechanical Engineering student, he combines technical curiosity with practical thinking, using engineering not only as an academic discipline but as a pathway to build real solutions for real challenges.</p>
+      <p>As a patent holder, his journey reflects a mindset focused on originality, problem solving, and innovation-driven creation. This background shows a clear commitment to developing ideas that are not only creative, but also protectable, scalable, and relevant to society and industry.</p>
+      <p>As the founder of WITHX Innovations, Sharad brings together the roles of engineer, innovator, and entrepreneur. His vision is centered on building a company that transforms concepts into meaningful products, strengthens the culture of engineering innovation, and inspires future creators to believe in the value of purposeful design and execution.</p>
+      <div class="quote-strip">“WITHX is built on the belief that engineering ideas should not stay on paper — they should become products, systems, and solutions that create real-world impact.”</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 WITHX Innovations Private Limited · About Page
+</footer>
+
+<script>
+const sections = document.querySelectorAll('section');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.14 });
+sections.forEach((section) => observer.observe(section));
+</script>
+</body>
+</html>

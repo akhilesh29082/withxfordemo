@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="WITHX Innovations engineering solutions, services, projects, products and contact information.">
+<title>WITHX Innovations | Industrial Engineering Solutions</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter', 'Segoe UI', system-ui, sans-serif;}
+
+:root{
+  --primary:#000000;
+  --secondary:#666666;
+  --accent:#000000;
+  --text:#000000;
+  --bg:#F5F5F3;
+  --bg-soft:#F5F5F3;
+  --panel:rgba(255,255,255,.98);
+  --panel-border:rgba(0,0,0,.06);
+  --muted:#999999;
+  --blue:#4F8DFF;
+  --gold:#FFD76A;
+  --max:1280px;
+}
+
+html{scroll-behavior:smooth;}
+body{
+  background:#F5F5F3;
+  color:var(--text);
+  overflow-x:hidden;
+  font-family:'Cormorant Garamond', 'PP Editorial New', 'Canela', 'Georgia', serif;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:transparent;
+  pointer-events:none;
+  z-index:0;
+}
+
+.orb{
+  position:fixed;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:0;
+  z-index:0;
+  animation:float 20s infinite ease-in-out;
+  display:none;
+}
+.orb1{display:none;}
+.orb2{display:none;}
+.orb3{display:none;}
+
+@keyframes float{
+  0%,100%{transform:translateY(0) translateX(0)}
+  50%{transform:translateY(-24px) translateX(18px)}
+}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes logoPulse{
+  0%,100%{transform:scale(1);filter:drop-shadow(0 0 10px rgba(56,189,248,.20));opacity:.98}
+  50%{transform:scale(1.05);filter:drop-shadow(0 0 18px rgba(56,189,248,.35));opacity:1}
+}
+@keyframes shapeFloatOne{
+  0%,100%{transform:translateY(0) rotate(-8deg) rotateX(8deg)}
+  50%{transform:translateY(-18px) rotate(8deg) rotateY(18deg)}
+}
+@keyframes shapeFloatTwo{
+  0%,100%{transform:translateY(0) translateX(0) scale(1)}
+  50%{transform:translateY(-12px) translateX(12px) scale(1.05)}
+}
+/* NAV premium */
+.top-navbar{
+  position:fixed !important;
+  top:0 !important;
+  left:0 !important;
+  width:100% !important;
+  height:88px !important;
+  transform:none !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  padding:0 48px !important;
+  background:#0b0d10 !important;
+  color:#ffffff !important;
+  border-radius:0 !important;
+  border:none !important;
+  box-shadow:none !important;
+  z-index:3000 !important;
+}
+
+.nav-left,
+.nav-right{
+  display:flex !important;
+  align-items:center !important;
+  gap:34px !important;
+}
+
+.brand{
+  display:flex !important;
+  align-items:center !important;
+  gap:14px !important;
+  color:#ffffff !important;
+  text-decoration:none !important;
+  font-size:24px !important;
+  font-weight:800 !important;
+  letter-spacing:3px !important;
+  padding:0 !important;
+  margin:0 !important;
+  background:transparent !important;
+  border-radius:0 !important;
+}
+
+.brand-logo-box{
+  height:54px !important;
+  min-width:76px !important;
+  padding:8px 14px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  background:#ffffff !important;
+  border-radius:14px !important;
+  box-shadow:0 8px 22px rgba(0,0,0,.22) !important;
+}
+
+.brand-logo-box img,
+.top-navbar .brand img,
+nav.top-navbar .brand img{
+  height:38px !important;
+  width:auto !important;
+  display:block !important;
+  object-fit:contain !important;
+  background:transparent !important;
+  padding:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  filter:none !important;
+  animation:none !important;
+  transform:none !important;
+}
+
+.brand-text{
+  color:#ffffff !important;
+}
+
+.nav-links{
+  display:flex !important;
+  align-items:center !important;
+  gap:30px !important;
+  flex-wrap:nowrap !important;
+}
+
+.top-navbar a{
+  color:#ffffff !important;
+  text-decoration:none !important;
+  font-size:16px !important;
+  font-weight:600 !important;
+  opacity:1 !important;
+  padding:0 !important;
+  margin:0 !important;
+  background:transparent !important;
+  border-radius:0 !important;
+  line-height:1 !important;
+  transition:color .25s ease, border-color .25s ease, box-shadow .25s ease, transform .25s ease !important;
+}
+
+.top-navbar a:hover,
+.top-navbar a.active{
+  color:#38bdf8 !important;
+}
+
+.ask-btn{
+  padding:14px 26px !important;
+  border:1px solid #8b5cf6 !important;
+  border-radius:999px !important;
+  background:#111827 !important;
+  color:#ffffff !important;
+}
+
+.ask-btn:hover{
+  border-color:#38bdf8 !important;
+  color:#ffffff !important;
+  box-shadow:0 0 24px rgba(56,189,248,.24) !important;
+  transform:translateY(-1px) !important;
+}
+
+.hero,
+.page-hero,
+.services-hero,
+.products-hero,
+.projects-hero,
+.research-hero,
+.contact-hero,
+.about-hero{
+  padding-top:160px !important;
+}
+
+main,
+.page-wrap{
+  padding-top:88px;
+}
+
+@media(max-width:900px){
+  .top-navbar{
+    height:auto !important;
+    padding:18px 22px !important;
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    gap:18px !important;
+  }
+
+  .nav-left,
+  .nav-right{
+    width:100% !important;
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    gap:16px !important;
+  }
+
+  .brand{
+    font-size:22px !important;
+  }
+
+  .brand-logo-box{
+    height:50px !important;
+    min-width:70px !important;
+  }
+
+  .nav-links{
+    width:100% !important;
+    display:flex !important;
+    flex-wrap:wrap !important;
+    gap:16px 22px !important;
+  }
+
+  .top-navbar a{
+    font-size:15px !important;
+  }
+
+  .ask-btn{
+    padding:12px 22px !important;
+  }
+
+  .hero,
+  .page-hero,
+  .services-hero,
+  .products-hero,
+  .projects-hero,
+  .research-hero,
+  .contact-hero,
+  .about-hero{
+    padding-top:210px !important;
+  }
+}
+nav{
+  position:fixed;
+  top:18px;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(1180px,calc(100% - 36px));
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 24px;
+  background:#ffffff;
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:26px;
+  box-shadow:0 8px 24px rgba(0,0,0,.06);
+  z-index:1000;
+}
+nav .logo{display:flex;align-items:center;gap:10px;}
+nav .logo img{
+  height:62px;
+  width:auto;
+  object-fit:contain;
+  filter:drop-shadow(0 0 16px rgba(56,189,248,.38));
+  animation:logoPulse 3.2s ease-in-out infinite;
+  transform-origin:center;
+  transition:.3s;
+}
+nav .logo img:hover{transform:scale(1.08);}
+nav a{
+  margin-left:16px;
+  text-decoration:none;
+  color:#111827;
+  opacity:.85;
+  transition:.3s;
+  font-size:.95rem;
+  font-weight:500;
+}
+nav a:hover{color:var(--accent);opacity:1;}
+nav a:hover{color:var(--accent);opacity:1;}
+
+.hero{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:180px 32px 80px;
+  position:relative;
+  overflow:hidden;
+  background:#F5F5F3;
+  margin-top:88px;
+}
+.hero-bg-slider{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  overflow:hidden;
+}
+
+.hero-bg-slide{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transition:opacity 12s ease-in-out;
+}
+
+.hero-bg-slide.active{
+  opacity:1;
+}
+
+.hero-bg-slide::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(255,255,255,.45), rgba(248,250,252,.85));
+}
+@keyframes centerMerge{
+0%{transform:translateX(-100%);}
+100%{transform:translateX(100%);}
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(255,255,255,.25), rgba(248,250,252,.95));
+  pointer-events:none;
+  z-index:2;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 50% 34%, rgba(37,99,235,.08), transparent 16%);
+  opacity:.65;
+  transform:translateY(var(--hero-overlay-shift, 0px));
+  z-index:2;
+  pointer-events:none;
+}
+.hero-inner{
+  width:min(1160px,100%);
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+  align-items:center;
+  justify-items:center;
+  position:relative;
+  z-index:3;
+}
+
+.hero-copy{
+  text-align:center;
+  transform:translateY(var(--hero-copy-shift, 0px));
+  transition:transform .15s linear;
+  background:transparent;
+  border:none;
+  border-radius:0;
+  padding:0;
+  box-shadow:none;
+  backdrop-filter:none;
+  max-width:1000px;
+  position:relative;
+  z-index:10;
+}
+.hero-kicker{
+  display:none;
+}
+.hero h1{
+  font-size:clamp(4rem, 12vw, 120px);
+  line-height:0.95;
+  letter-spacing:-0.02em;
+  margin:0 auto 24px;
+  color:#000000;
+  max-width:18ch;
+  font-weight:400;
+  font-family:'Cormorant Garamond', 'PP Editorial New', 'Canela', serif;
+}
+.hero p{
+  max-width:600px;
+  color:#666666;
+  font-size:clamp(1rem, 2vw, 1.2rem);
+  line-height:1.7;
+  margin:0 auto 40px;
+  font-family:'Inter', 'Segoe UI', sans-serif;
+  font-weight:400;
+}
+.hero-actions{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:48px;
+  justify-content:center;
+}
+
+.hero-wave-canvas{
+  position:absolute;
+  left:0;
+  bottom:35px;
+  width:100%;
+  height:320px;
+  z-index:4;
+  pointer-events:none;
+}
+.hero-copy::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  top:62px;
+  width:120px;
+  height:3px;
+  border-radius:999px;
+  background:linear-gradient(90deg, transparent, rgba(56,189,248,.95), transparent);
+  box-shadow:0 0 12px rgba(56,189,248,.45);
+}
+.btn{
+  padding:16px 32px;
+  border:none;
+  border-radius:999px;
+  background:#000000;
+  color:#ffffff;
+  font-weight:600;
+  cursor:pointer;
+  transition:.25s ease;
+  box-shadow:none;
+  font-size:15px;
+  font-family:'Inter', sans-serif;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 32px rgba(0,0,0,.12);
+}
+.btn.secondary{
+  background:#ffe292;
+  color:var(--text);
+  border:1px solid rgba(0,0,0,.12);
+  box-shadow:none;
+}
+.btn.secondary:hover{
+  background:#4F8DFF;
+  border-color:rgba(0,0,0,.2);
+}
+
+.floating-shape{
+  display:none;
+}
+.floating-cube{display:none;}
+.floating-disc{display:none;}
+
+section{width:min(var(--max),calc(100% - 40px));margin:0 auto;padding:96px 0;opacity:0;transform:translateY(70px) scale(.98);transition:opacity .95s ease, transform .95s ease;position:relative;z-index:2;}
+section.show{opacity:1;transform:translateY(0) scale(1);}
+.reveal-line{overflow:hidden;}
+.reveal-line > *{display:inline-block;transform:translateY(115%);transition:transform .8s cubic-bezier(.2,.8,.2,1);}
+section.show .reveal-line > *{transform:translateY(0);}
+.hero .reveal-line > *{transform:translateY(0);}
+.title{font-size:clamp(2rem,3.5vw,3rem);font-weight:700;margin-bottom:18px;color:var(--primary);}
+.section-top{max-width:760px;margin-bottom:30px;}
+.section-top p{color:var(--muted);line-height:1.85;}
+.center{text-align:center;display:flex;flex-direction:column;align-items:center;}
+
+.btn-secondary{
+  padding:14px 24px;
+  border:none;
+  border-radius:16px;
+  background:linear-gradient(180deg,var(--accent),var(--blue-strong));
+  color:#003ce2;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+  box-shadow:0 8px 20px rgba(56,189,248,.25);
+}
+.btn-secondary:hover{transform:translateY(-2px) scale(1.02); 
+                    }
+
+
+.about-minimal{min-height:72vh;display:grid;place-items:center;text-align:center;overflow:hidden;}
+.about-shell{position:relative;z-index:2;max-width:860px;padding:48px 36px;border-radius:28px;background:var(--panel);border:1px solid var(--panel-border);backdrop-filter:blur(16px);box-shadow:0 24px 40px rgba(15,23,42,.08);transform:translateY(var(--about-shift,0px)) scale(var(--about-scale, 1));transition:transform .18s linear;}
+
+.about-mini-label{display:inline-block;padding:10px 16px;border-radius:999px;background:rgba(37,99,235,.10);border:1px solid rgba(37,99,235,.16);color:var(--accent);font-size:.84rem;font-weight:600;letter-spacing:.04em;margin-bottom:18px;}
+.about-mini-label a{
+  text-decoration:none;
+  font-size:1rem;
+  color:var(--primary);
+}
+.about-mini-label a:hover{
+  text-decoration:underline;
+}
+.about-title{max-width:12ch;margin-inline:auto;color:var(--text);}
+.about-copy{max-width:640px;margin:0 auto;color:var(--secondary);line-height:1.9;font-size:1.05rem;}
+.about-float{position:absolute;border-radius:24px;background:linear-gradient(180deg, rgba(37,99,235,.10), rgba(59,130,246,.04));border:1px solid rgba(37,99,235,.14);box-shadow:0 22px 50px rgba(15,23,42,.08);backdrop-filter:blur(10px);z-index:1;transition:transform .15s linear;}
+.about-float-1{width:160px;height:160px;top:18%;left:8%;transform:translateY(var(--float-one,0px)) rotate(-14deg);}
+.about-float-2{width:220px;height:90px;right:10%;bottom:22%;border-radius:999px;transform:translateY(var(--float-two,0px)) rotate(10deg);}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;}
+.stagger-grid{
+display:flex;
+justify-content:center;   /* centers cards */
+align-items:stretch;
+flex-wrap:wrap;           /* wraps on smaller screens */
+gap:30px;
+max-width:1200px;
+margin:0 auto;            /* centers whole section */
+}
+
+.stagger-grid .card{
+flex:0 1 260px;           /* equal card width */
+max-width:280px;
+min-height:420px;
+}.product-showcase{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;}
+.product-stack{display:grid;gap:24px;}
+.feature-card{min-height:100%;}
+.card{background:var(--panel);border:1px solid var(--panel-border);padding:24px;border-radius:22px;backdrop-filter:blur(16px);transition:.45s ease;box-shadow:0 10px 40px rgba(10,31,68,.08);transform-style:preserve-3d;position:relative;overflow:hidden;}
+.card::before{content:"";position:absolute;inset:-40% auto auto -20%;width:140px;height:220px;background:linear-gradient(180deg, rgba(255,255,255,.35), transparent 70%);transform:rotate(24deg);opacity:0;transition:.45s ease;}
+.card img.card-image{width:100%;height:190px;object-fit:cover;border-radius:16px;margin-bottom:18px;border:1px solid rgba(10,31,68,.08);}
+.card:hover{transform:translateY(-12px) rotateX(6deg) rotateY(-5deg);border-color:rgba(56,189,248,.45);box-shadow:0 18px 48px rgba(56,189,248,.12);}
+.card:hover::before{opacity:.6;transform:translateX(40px) rotate(24deg);}
+
+
+.carousel{
+display:flex;
+gap:24px;
+overflow-x:auto;
+overflow-y:hidden;
+padding:10px 5px 18px;
+scroll-behavior:smooth;
+align-items:stretch;
+}
+
+.carousel .card{
+min-width:280px;
+max-width:280px;
+flex:0 0 auto;
+height:360px;
+display:flex;
+flex-direction:column;
+justify-content:flex-start;
+}
+.carousel .card-image{
+width:100%;
+height:190px;
+object-fit:cover;
+border-radius:16px;
+margin-bottom:14px;
+}
+.carousel::-webkit-scrollbar{height:8px;}
+.carousel::-webkit-scrollbar-thumb{background:rgba(10,31,68,.16);border-radius:999px;}
+.tag{display:inline-block;padding:7px 12px;border-radius:999px;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.22);color:#0369a1;font-size:.82rem;margin-top:12px;}
+.form-control{width:100%;padding:14px 16px;margin-bottom:12px;border-radius:14px;border:1px solid rgba(10,31,68,.12);background:rgba(255,255,255,.85);color:var(--text);}
+textarea.form-control{min-height:140px;resize:vertical;}
+footer{padding:60px 20px 70px;background:#f8fafc;border-top:1px solid rgba(15,23,42,.05);text-align:center;color:var(--secondary);position:relative;z-index:2;}
+
+@media (max-width:980px){
+  nav{width:min(96%,calc(100% - 20px));top:12px;padding:14px 18px;}
+  .hero-inner{grid-template-columns:1fr;gap:20px;}
+  .hero-copy{text-align:center;padding:10px 6px 20px;}
+  .hero h1{max-width:none;font-size:clamp(3rem,10vw,4.6rem);}
+  .hero-ring{width:520px;height:520px;top:-60px;}
+  .hero-ring.r2{width:390px;height:390px;top:30px;}
+  .stagger-grid{grid-template-columns:1fr;}
+  .stagger-grid .card:nth-child(1),
+  .stagger-grid .card:nth-child(2),
+  .stagger-grid .card:nth-child(3),
+  .stagger-grid .card:nth-child(4){grid-column:auto;}
+  .product-showcase{grid-template-columns:1fr;}
+}
+@media (max-width:720px){
+  nav{padding:12px 16px;gap:10px;flex-direction:column;align-items:flex-start;border-radius:22px;}
+  nav div:last-child{display:flex;flex-wrap:wrap;gap:8px;}
+  nav a{margin-left:0;font-size:.88rem;}
+  .hero{padding-top:150px;background-position:center bottom;}
+  .hero-visual{min-height:0;}
+  section{width:min(var(--max),calc(100% - 24px));padding:72px 0;}
+  .hero-ring{display:none;}
+  .about-shell{padding:34px 22px;}
+  .about-float-1{width:110px;height:110px;left:-10px;}
+  .about-float-2{width:140px;height:62px;right:-8px;}
+  .floating-cube,.floating-disc{width:92px;height:92px;}
+}
+
+
+
+
+.about-shell{
+position:relative;
+z-index:2;
+
+width:min(900px,90%);
+margin:0 auto;          /* centers card */
+
+padding:60px 50px;
+border-radius:28px;
+
+background:linear-gradient(
+180deg,
+rgba(255,255,255,.72),
+rgba(255,255,255,.52)
+);
+
+border:1px solid rgba(10,31,68,.08);
+backdrop-filter:blur(16px);
+box-shadow:0 24px 60px rgba(10,31,68,.08);
+
+transform:translateY(var(--about-shift,0px))
+scale(var(--about-scale,1));
+
+transition:transform .18s linear;
+text-align:center;   /* center text too */
+}
+
+
+
+
+/*for mobile view*/
+/* ========= MOBILE FIX ========= */
+@media (max-width:768px){
+
+/* Navbar */
+nav{
+width:95%;
+left:50%;
+transform:translateX(-50%);
+padding:14px 16px;
+flex-direction:column;
+align-items:center;
+text-align:center;
+gap:12px;
+}
+
+nav .logo img{
+height:50px;
+}
+
+nav div:last-child{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:12px;
+}
+
+nav a{
+margin:0;
+font-size:.9rem;
+}
+
+/* Hero */
+.hero{
+padding:170px 18px 70px;
+min-height:auto;
+}
+
+.hero h1{
+font-size:2.4rem;
+line-height:1.2;
+max-width:100%;
+}
+
+.hero p{
+font-size:1rem;
+line-height:1.7;
+}
+
+.hero-actions{
+flex-direction:column;
+align-items:center;
+}
+
+.hero-actions .btn,
+.hero-actions .btn-secondary{
+width:100%;
+max-width:280px;
+}
+
+/* ABOUT CARD CENTER FIX */
+.about-minimal{
+padding:70px 18px;
+}
+
+.about-shell{
+width:100%;
+max-width:100%;
+padding:35px 24px;
+margin:auto;
+border-radius:24px;
+text-align:center;
+}
+
+.about-title{
+font-size:2rem;
+max-width:100%;
+}
+
+.about-copy{
+font-size:1rem;
+}
+
+/* Floating shapes smaller */
+.about-float-1{
+width:70px;
+height:70px;
+left:10px;
+top:10%;
+}
+
+.about-float-2{
+width:100px;
+height:50px;
+right:10px;
+bottom:12%;
+}
+}
+/* Service cards */
+/* ===== SERVICES MOBILE FIX ===== */
+@media (max-width:768px){
+
+.stagger-grid{
+display:grid;
+grid-template-columns:1fr 1fr;  /* 2 cards per row */
+gap:16px;
+justify-content:center;
+}
+
+.stagger-grid .card{
+width:100%;
+max-width:100%;
+min-height:auto;
+padding:18px;
+}
+
+.stagger-grid .card img{
+height:140px;
+}
+}
+
+/* Products */
+/* ===== PRODUCTS MOBILE FIX ===== */
+@media (max-width:768px){
+
+.product-showcase{
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+/* Featured big card */
+.feature-card{
+padding:20px;
+text-align:center;
+}
+
+.feature-card .card-image{
+height:200px !important;
+}
+
+/* Stack becomes grid */
+.product-stack{
+display:grid;
+grid-template-columns:1fr 1fr; /* 2 items per row */
+gap:16px;
+}
+
+/* Small cards */
+.product-stack .card{
+padding:16px;
+}
+
+.product-stack .card .card-image{
+height:120px;
+}
+
+}
+
+/* Carousel */
+.carousel{
+padding-bottom:14px;
+gap:18px;
+}
+
+.carousel .card{
+min-width:260px;
+max-width:260px;
+height:auto;
+}
+
+/* Contact */
+#contact-panel .grid{
+grid-template-columns:1fr !important;
+}
+
+
+
+/* General */
+section{
+padding:70px 0;
+width:calc(100% - 24px);
+}
+
+.card{
+padding:20px;
+}
+
+.card img.card-image{
+height:180px;
+}
+
+
+
+/* Extra small phones */
+@media (max-width:480px){
+
+.hero h1{
+font-size:2rem;
+}
+
+.title{
+font-size:1.8rem;
+}
+
+.about-shell{
+padding:28px 18px;
+}
+
+.carousel .card{
+min-width:230px;
+}
+
+nav{
+border-radius:18px;
+}
+
+}
+
+
+/* ================= WITHX UI/UX POLISH PATCH ================= */
+:root{
+  --radius-lg:28px;
+  --radius-md:18px;
+  --shadow-soft:0 18px 50px rgba(10,31,68,.10);
+  --shadow-hover:0 28px 75px rgba(10,31,68,.16);
+  --gradient-accent:linear-gradient(135deg,#38bdf8,#2563eb);
+}
+
+html{scroll-padding-top:96px;}
+body{min-height:100vh;}
+::selection{background:rgba(56,189,248,.25);color:#0a1f44;}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:auto 0 0 0;
+  height:160px;
+  background:linear-gradient(0deg,rgba(248,251,255,.92),rgba(248,251,255,0));
+  pointer-events:none;
+  z-index:1;
+}
+
+nav{
+  width:min(1180px,calc(100% - 28px)) !important;
+  left:50%;
+  top:14px !important;
+  transform:translateX(-50%);
+  border:1px solid rgba(10,31,68,.08) !important;
+  border-radius:999px;
+  box-shadow:0 12px 35px rgba(10,31,68,.08);
+  padding:12px 18px !important;
+}
+nav .logo img,.logo img{height:42px !important;width:auto;display:block;}
+nav > div:last-child,.nav-links{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  flex-wrap:wrap;
+}
+nav a{
+  margin-left:0 !important;
+  padding:9px 12px;
+  border-radius:999px;
+  font-weight:600;
+  line-height:1;
+}
+nav a:hover,nav a.active{
+  color:#0369a1 !important;
+  background:rgba(56,189,248,.12);
+  opacity:1 !important;
+}
+
+.hero{padding-top:132px !important;}
+.hero h1,.title{letter-spacing:-.045em;}
+.hero p,.lead,section p{font-size:clamp(.98rem,1.5vw,1.08rem);}
+
+button,.btn,.call-btn,.whatsapp-btn,.cta,a.btn{
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  transition:transform .25s ease,box-shadow .25s ease,background .25s ease,border-color .25s ease !important;
+}
+button:hover,.btn:hover,.call-btn:hover,.whatsapp-btn:hover,.cta:hover,a.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 34px rgba(14,165,233,.20);
+}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
+  outline:3px solid rgba(56,189,248,.35);
+  outline-offset:3px;
+}
+
+.card,.glass,.hero-copy,.hero-frame,.visual-frame,.service-card,.project-card,.product-card,.research-card,.float-card{
+  transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease,background .35s ease !important;
+}
+.card:hover,.glass:hover,.service-card:hover,.project-card:hover,.product-card:hover,.research-card:hover{
+  transform:translateY(-6px);
+  box-shadow:var(--shadow-hover) !important;
+  border-color:rgba(56,189,248,.25) !important;
+}
+img{max-width:100%;}
+.card img,.service-card img,.project-card img,.product-card img,.research-card img,.card-image{
+  transition:transform .45s ease,filter .45s ease;
+}
+.card:hover img,.service-card:hover img,.project-card:hover img,.product-card:hover img,.research-card:hover img{
+  transform:scale(1.035);
+  filter:saturate(1.05) contrast(1.03);
+}
+
+input,textarea{
+  background:rgba(255,255,255,.86) !important;
+  border:1px solid rgba(10,31,68,.12) !important;
+  font:inherit;
+  transition:border-color .25s ease,box-shadow .25s ease,background .25s ease;
+}
+input:focus,textarea:focus{
+  border-color:#38bdf8 !important;
+  box-shadow:0 0 0 4px rgba(56,189,248,.12);
+  background:#fff !important;
+}
+.map iframe{display:block;width:100%;border-radius:20px;}
+
+.back-to-top{
+  position:fixed;
+  right:22px;
+  bottom:88px;
+  width:44px;
+  height:44px;
+  border-radius:999px;
+  border:1px solid rgba(10,31,68,.10);
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(12px);
+  color:#0a1f44;
+  display:grid;
+  place-items:center;
+  text-decoration:none;
+  box-shadow:0 12px 30px rgba(10,31,68,.12);
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(8px);
+  transition:.25s ease;
+  z-index:1200;
+}
+.back-to-top.show{opacity:1;pointer-events:auto;transform:translateY(0);}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;scroll-behavior:auto !important;transition-duration:.001ms !important;}
+}
+
+@media(max-width:980px){
+  nav{
+    border-radius:24px;
+    align-items:flex-start !important;
+    gap:10px;
+  }
+  nav > div:last-child,.nav-links{
+    width:100%;
+    overflow-x:auto;
+    flex-wrap:nowrap;
+    justify-content:flex-start;
+    padding-bottom:3px;
+    scrollbar-width:none;
+  }
+  nav > div:last-child::-webkit-scrollbar,.nav-links::-webkit-scrollbar{display:none;}
+  .hero-grid,.grid{grid-template-columns:1fr !important;}
+  .hero-visual{min-height:420px !important;}
+  .hero h1{max-width:100% !important;}
+}
+
+@media(max-width:640px){
+  nav{width:calc(100% - 18px) !important;top:9px !important;padding:10px 12px !important;}
+  nav .logo img,.logo img{height:36px !important;}
+  nav a{font-size:.86rem;padding:8px 10px;white-space:nowrap;}
+  .hero{padding:122px 14px 44px !important;min-height:auto !important;}
+  .hero-copy,.card,.glass{border-radius:22px !important;padding:22px !important;}
+  .hero-metrics,.hero-stat-row,.hero-stats{grid-template-columns:1fr !important;}
+  section{width:min(100% - 28px,var(--max,1200px)) !important;padding:64px 0 !important;}
+  .float{right:14px !important;bottom:14px !important;}
+  .back-to-top{right:14px;bottom:82px;}
+}
+/* ================= END WITHX UI/UX POLISH PATCH ================= */
+
+.footer{
+  background:#0f172a;
+  color:#fff;
+  padding:70px 8% 25px;
+  margin-top:80px;
+  text-align:left;
+  border-top:1px solid rgba(255,255,255,.08);
+  position:relative;
+  z-index:2;
+}
+
+.footer-container{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1.4fr;
+  gap:50px;
+}
+
+.footer-box h3{
+  font-size:28px;
+  font-weight:800;
+  margin-bottom:15px;
+  color:#fff;
+  letter-spacing:.3px;
+}
+
+.footer-box h4{
+  font-size:18px;
+  margin-bottom:20px;
+  color:#fff;
+}
+
+.footer-box p{
+  color:#cbd5e1;
+  line-height:1.8;
+  font-size:15px;
+}
+
+.footer-links,
+.footer-contact{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.footer-links a,
+.footer-contact a{
+  color:#cbd5e1;
+  text-decoration:none;
+  transition:.3s ease;
+}
+
+.footer-links a:hover,
+.footer-contact a:hover{
+  color:#38bdf8;
+  transform:translateX(4px);
+}
+
+.footer-contact span{
+  color:#cbd5e1;
+  line-height:1.6;
+}
+
+.social-links{
+  display:flex;
+  gap:12px;
+  margin-top:15px;
+  flex-wrap:wrap;
+}
+
+.social-links a{
+  padding:10px 16px;
+  border-radius:999px;
+  background:#1e293b;
+  font-weight:600;
+  box-shadow:0 10px 24px rgba(0,0,0,.16);
+}
+
+.social-links a:hover{
+  transform:translateY(-3px);
+}
+
+.linkedin{color:#60a5fa !important;}
+.instagram{color:#fb7185 !important;}
+.youtube{color:#f87171 !important;}
+
+.footer-bottom{
+  max-width:1200px;
+  margin:40px auto 0;
+  padding-top:20px;
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,.1);
+  color:#94a3b8;
+  font-size:14px;
+}
+
+@media(max-width:900px){
+  .footer{
+    padding:50px 6% 22px;
+    margin-top:60px;
+  }
+
+  .footer-container{
+    grid-template-columns:1fr;
+    gap:35px;
+  }
+}
+/* ===== END PREMIUM FOOTER FIX ===== */
+
+
+
+
+
+
+</style>
+</head>
+<body>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+<nav class="top-navbar">
+  <div class="nav-left">
+    <a class="brand" href="index.html" aria-label="WITHX Home">
+      <span class="brand-logo-box"><img src="https://i.ibb.co/BVTS9KXY/image-removebg-preview-4.png" alt="WITHX Logo"></span>
+      <span class="brand-text">WITHX</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="products.html">Products</a>
+      <a href="projects.html">Projects</a>
+      <a href="research.html">Research</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+
+  <div class="nav-right">
+    <a class="ask-btn" href="contact.html">Ask WITHX</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
+<div class="hero" id="home">
+  <canvas id="waveCanvas" class="hero-wave-canvas"></canvas>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <h1 class="reveal-line"><span>Engineering Innovations Into Reality</span></h1>
+      <p class="reveal-line"><span>Transform your boldest ideas into breakthrough products with cutting-edge research, precision design, and scalable manufacturing solutions</span></p>
+      <div class="hero-actions">
+        <button class="btn" onclick="window.location.href='products.html'" style="background:#000; color:#fff;">
+          <span style="font-size:10px;">→</span> Explore Products
+        </button>
+        <button class="btn secondary" onclick="window.location.href='contact.html'">
+          Get Started
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="about" class="about-minimal parallax-section">
+  <div class="about-float about-float-1"></div>
+  <div class="about-float about-float-2"></div>
+  <div class="about-shell">
+    <div class="about-mini-label reveal-line"><span><a href="about.html">About WITHX</a></span></div>
+    <h2 class="title about-title reveal-line"><span>Engineering ideas into useful products.</span></h2>
+    <p class="about-copy reveal-line"><span>WITHX Innovations builds practical, innovation-led engineering solutions focused on manufacturing, research, prototyping, and industrial design.</span></p>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-top">
+    <div class="title">Service Highlights</div>
+    <p>Core capabilities that support product innovation and engineering execution.</p>
+  </div>
+  <div class="stagger-grid">
+    <div class="card" onclick="window.location.href='services.html'" style="cursor:pointer;">
+      <img class="card-image" src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1200&q=80" alt="Manufacturing solutions">
+      <div>🏭 <strong>Manufacturing Solutions</strong></div>
+      <div style="color:var(--muted);margin-top:10px;">Execution-oriented engineering for manufacturable product systems.</div>
+    </div>
+    <div class="card" onclick="window.location.href='services.html'" style="cursor:pointer;">
+      <img class="card-image" src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1200&q=80" alt="Research and development">
+      <div>🔬 <strong>Research &amp; Development</strong></div>
+      <div style="color:var(--muted);margin-top:10px;">Research-backed exploration, concept refinement, and technical innovation.</div>
+    </div>
+    <div class="card" onclick="window.location.href='services.html'" style="cursor:pointer;">
+      <img class="card-image" src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80" alt="Prototype development">
+      <div>🧩 <strong>Prototype Development</strong></div>
+      <div style="color:var(--muted);margin-top:10px;">Rapid concept-to-model workflows for functional engineering outputs.</div>
+    </div>
+    <div class="card" onclick="window.location.href='services.html'" style="cursor:pointer;">
+      <img class="card-image" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80" alt="Industrial design">
+      <div>📐 <strong>Industrial Design</strong></div>
+      <div style="color:var(--muted);margin-top:10px;">Functional product thinking shaped into clear, practical design systems.</div>
+    </div>
+  </div>
+</section>
+
+<section id="products">
+  <div class="section-top">
+    <div class="title">Featured Products</div>
+    <p>A quick look at key products from the WITHX portfolio.</p>
+  </div>
+  <div class="product-showcase">
+    <div class="card feature-card" onclick="window.location.href='products.html'" style="cursor:pointer;">
+      <img class="card-image" src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1400&q=80" alt="Utensil cleaner" style="height:320px;">
+      <strong style="font-size:1.35rem;display:block;margin-bottom:10px;">Multifunctional Utensil Cleaner</strong>
+      <span style="opacity:.78;line-height:1.8;display:block;">A utility-focused concept designed to improve everyday cleaning efficiency with a practical engineering approach.</span>
+     <a href="products.html" class="btn" style="margin-top:12px; display:inline-block; text-decoration:none;">
+View Product
+</a>
+    </div>
+    <div class="product-stack">
+      <div class="card" onclick="window.location.href='products.html'" style="cursor:pointer;">
+        <img class="card-image" src="https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=1200&q=80" alt="Food machine">
+        <strong>Wada Maker Machine</strong><br>
+        <span style="opacity:.75;">Consistency and speed focused machine concept.</span>
+      <a href="products.html" class="btn" style="margin-top:12px; display:inline-block; text-decoration:none;">
+View Product
+</a>
+      </div>
+      <div class="card" onclick="window.location.href='products.html'" style="cursor:pointer;">
+        <img class="card-image" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80" alt="Driver rescue system">
+        <strong>Driver Rescue System</strong><br>
+        <span style="opacity:.75;">Safety-centered engineering innovation.</span>
+      <a href="products.html" class="btn" style="margin-top:12px; display:inline-block; text-decoration:none;">
+View Product
+</a>
+      </div>
+      <div class="card" onclick="window.location.href='products.html'" style="cursor:pointer;">
+        <img class="card-image" src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1200&q=80" alt="Helmet locking system">
+        <strong>Helmet Locking System</strong><br>
+        <span style="opacity:.75;">Smart daily-use protection concept.</span>
+        <a href="products.html" class="btn" style="margin-top:12px; display:inline-block; text-decoration:none;">
+View Product
+</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-top">
+    <div class="title">Project Showcase</div>
+    <p>Selected projects from WITHX1 to WITHX8.</p>
+  </div>
+
+  <div class="carousel">
+
+ <div class="card" onclick="window.location.href='projects.html'" style="cursor:pointer;">
+      <img class="card-image" src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80">
+      <strong>WITHX1</strong>
+      <div class="tag">Smart Factory Automation System</div>
+    </div>
+
+   <div class="card" onclick="window.location.href='projects.html'" style="cursor:pointer;">
+      <img class="card-image" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80">
+      <strong>WITHX2</strong>
+      <div class="tag">Industrial Safety Alert Platform</div>
+    </div>
+
+   <div class="card" onclick="window.location.href='projects.html'" style="cursor:pointer;">
+      <img class="card-image" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80">
+      <strong>WITHX3</strong>
+      <div class="tag">IoT Energy Monitoring Network</div>
+    </div>
+
+    <div class="card" onclick="window.location.href='projects.html'" style="cursor:pointer;">
+      <img class="card-image" src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1200&q=80">
+      <strong>WITHX4</strong>
+      <div class="tag">Precision Product Design Studio</div>
+    </div>
+
+   <div class="card" onclick="window.location.href='projects.html'" style="cursor:pointer;">
+      <img class="card-image" src="https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&w=1200&q=80">
+      <strong>WITHX5</strong>
+      <div class="tag">Innovation Prototype Lab</div>
+    </div>
+   
+<div class="card" onclick="window.location.href='projects.html'" style="cursor:pointer;">
+      <img class="card-image" src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1200&q=80">
+      <strong>WITHX6</strong>
+      <div class="tag">Advanced Manufacturing Line</div>
+    </div>
+
+   <div class="card" onclick="window.location.href='projects.html'" style="cursor:pointer;">
+      <img class="card-image" src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80">
+      <strong>WITHX7</strong>
+      <div class="tag">Research & Testing Module</div>
+    </div>
+
+    <div class="card" onclick="window.location.href='projects.html'" style="cursor:pointer;">
+      <img class="card-image" src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=1200&q=80">
+      <strong>WITHX8</strong>
+      <div class="tag">Smart Control Systems Hub</div>
+    </div>
+
+<div class="card" onclick="window.location.href='projects.html'" style="cursor:pointer;">
+      <img class="card-image" src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80">
+      <strong>WITHX9</strong>
+      <div class="tag">Intelligent Engineering Solutions</div>
+    </div>
+
+ <div class="card" onclick="window.location.href='projects.html'" style="cursor:pointer;">
+      <img class="card-image" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80">
+      <strong>WITHX10</strong>
+      <div class="tag">Corporate Process Optimizer</div>
+    </div>
+
+<div class="card" onclick="window.location.href='projects.html'" style="cursor:pointer;">
+      <img class="card-image" src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80">
+      <strong>WITHX11</strong>
+      <div class="tag">Team Productivity Ecosystem</div>
+    </div>
+
+<div class="card" onclick="window.location.href='projects.html'" style="cursor:pointer;">
+      <img class="card-image" src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=80">
+      <strong>WITHX12</strong>
+      <div class="tag">Smart Consumer Product Seriess</div>
+    </div>
+
+
+  </div>
+</section>
+
+<section class="center" id="cta">
+  <div class="section-top">
+    <div class="title">Let’s Build With Purpose</div>
+    <p>Explore our products, discover our engineering capabilities, or contact us to collaborate.</p>
+  </div>
+  <div class="hero-actions">
+    <button class="btn" onclick="window.location.href='products.html'">Explore Products</button>
+    <button class="btn-secondary" onclick="window.location.href='contact.html'">Contact Us</button>
+  </div>
+</section>
+
+<section id="contact-panel">
+
+  <div class="grid contact-grid">
+    <div class="card">
+      <div class="title" style="font-size:clamp(1.8rem,3vw,2.8rem);margin-bottom:10px;">Contact WITHX</div>
+      <p style="color:var(--muted);margin-bottom:22px;line-height:1.8;">Let’s discuss products, collaborations, prototypes, and engineering innovation opportunities.</p>
+      <form action="https://formsubmit.co/yourcompanyemail@example.com" method="POST">
+        <input type="hidden" name="_subject" value="New WITHX Website Message">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input class="form-control" type="text" name="name" placeholder="Your Name" required>
+        <input class="form-control" type="email" name="email" placeholder="Your Email" required>
+        <textarea class="form-control" name="message" placeholder="Your Message" required></textarea>
+        <button class="btn" type="submit">Send Message</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <img class="card-image" src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80" alt="Office and collaboration">
+      <strong style="font-size:1.15rem;display:block;margin-bottom:12px;">Pune, Maharashtra</strong>
+      <p style="color:var(--muted);line-height:1.8;margin-bottom:18px;">WITHX Innovations Private Limited creates practical engineering solutions across research, manufacturing, and smart product development.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a class="tag" href="https://www.linkedin.com/company/withx-innovations/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="tag" href="https://www.instagram.com/withx.in?igsh=MWJuNDR4dmxiZDJh" target="_blank" rel="noopener">Instagram</a>
+        <a class="tag" href="https://youtube.com/@withxinnovation?si=sRdB0OaLzHoDtcV5" target="_blank" rel="noopener">YouTube</a>
+        <a class="tag" href="mailto:yourcompanyemail@example.com">Email</a>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <div class="footer-box">
+      <h3>WITHX INNOVATIONS</h3>
+      <p>
+        WITHX Innovations Private Limited is an engineering-driven company
+        focused on research &amp; development, manufacturing solutions,
+        industrial design, product innovation and advanced technology development.
+      </p>
+    </div>
+
+    <div class="footer-box">
+      <h4>Quick Links</h4>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="services.html">Services</a>
+        <a href="products.html">Products</a>
+        <a href="projects.html">Projects</a>
+        <a href="research.html">Research</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+
+    <div class="footer-box">
+      <h4>Contact</h4>
+      <div class="footer-contact">
+        <span>📍 EDF MITAoE, Dehu Phata, Alandi (D), Pune, Maharashtra</span>
+        <span>🏢 WITHX Innovations Pvt. Ltd.</span>
+
+        <a href="mailto:withx.innovations@gmail.com">
+          ✉ withx.innovations@gmail.com
+        </a>
+
+        <div class="social-links">
+          <a class="linkedin" href="https://www.linkedin.com/company/withx-innovations/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="instagram" href="https://www.instagram.com/withx.in" target="_blank" rel="noopener">Instagram</a>
+          <a class="youtube" href="https://youtube.com/@withxinnovation" target="_blank" rel="noopener">YouTube</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    ©️ 2026 WITHX Innovations Private Limited. All Rights Reserved.
+  </div>
+
+</footer>
+
+
+
+<script>
+const sections = document.querySelectorAll('section');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.15 });
+sections.forEach((section) => observer.observe(section));
+
+
+
+const heroBgSlides = document.querySelectorAll('.hero-bg-slide');
+let heroBgIndex = 0;
+if(heroBgSlides.length){
+  setInterval(() => {
+    heroBgSlides[heroBgIndex].classList.remove('active');
+    heroBgIndex = (heroBgIndex + 1) % heroBgSlides.length;
+    heroBgSlides[heroBgIndex].classList.add('active');
+  }, 5000);
+}
+
+const cards = document.querySelectorAll('.card');
+cards.forEach((card) => {
+  card.addEventListener('mousemove', (event) => {
+    const rect = card.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    const rx = ((y / rect.height) - 0.5) * -6;
+    const ry = ((x / rect.width) - 0.5) * 6;
+    card.style.transform = `translateY(-12px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+
+const parallaxTargets = document.querySelectorAll('.orb, .floating-shape, .hero-ring');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  parallaxTargets.forEach((element, idx) => {
+    const speed = (idx + 1) * 0.04;
+    element.style.transform = `translateY(${y * speed}px)`;
+  });
+
+  const hero = document.getElementById('home');
+  const heroCopy = document.querySelector('.hero-copy');
+  const heroKicker = document.querySelector('.hero-kicker');
+  if(hero){
+    const rect = hero.getBoundingClientRect();
+    const progress = rect.top * -0.2;
+    hero.style.setProperty('--hero-overlay-shift', `${progress * 0.18}px`);
+    if(heroCopy){
+      heroCopy.style.setProperty('--hero-copy-shift', `${progress * -0.06}px`);
+    }
+    if(heroKicker){
+      heroKicker.style.setProperty('--hero-kicker-shift', `${progress * -0.12}px`);
+    }
+  }
+
+  const about = document.getElementById('about');
+  if(about){
+    const rect = about.getBoundingClientRect();
+    const progress = Math.max(-120, Math.min(120, (window.innerHeight * 0.5 - rect.top) * 0.12));
+    about.style.setProperty('--about-shift', `${progress * 0.18}px`);
+    about.style.setProperty('--about-scale', `${1 + Math.abs(progress) * 0.0004}`);
+    about.style.setProperty('--float-one', `${progress * -0.35}px`);
+    about.style.setProperty('--float-two', `${progress * 0.28}px`);
+  }
+});
+
+console.assert(typeof observer !== 'undefined', 'IntersectionObserver should initialize');
+console.assert(document.getElementById('home'), 'Hero section should exist');
+console.assert(document.querySelector('.hero-copy'), 'Hero content should exist');
+console.assert(document.querySelectorAll('.hero-bg-slide').length > 0, 'Hero background slides should exist');
+
+</script>
+
+<script>
+(function(){
+  const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  document.querySelectorAll('nav a').forEach(link => {
+    const href = (link.getAttribute('href') || '').toLowerCase();
+    if (href === current) {
+      link.classList.add('active');
+      link.setAttribute('aria-current','page');
+    }
+  });
+
+  const topBtn = document.createElement('a');
+  topBtn.href = '#';
+  topBtn.className = 'back-to-top';
+  topBtn.setAttribute('aria-label','Back to top');
+  topBtn.textContent = '↑';
+  document.body.appendChild(topBtn);
+  window.addEventListener('scroll', () => {
+    topBtn.classList.toggle('show', window.scrollY > 520);
+  }, {passive:true});
+})();
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// WITHX Premium Blue-Gold Particle Ribbon Wave
+(function(){
+  const canvas = document.getElementById("waveCanvas");
+  if(!canvas) return;
+
+  const ctx = canvas.getContext("2d");
+  let w, h, t = 0;
+
+  function resize(){
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = 320;
+  }
+
+  resize();
+  window.addEventListener("resize", resize);
+
+  function ribbon(color1, color2, phase, amp, thick, yShift){
+    const top = [];
+    const bottom = [];
+
+    for(let x = -20; x <= w + 20; x += 4){
+      const y = h / 2 + yShift +
+        Math.sin(x * 0.006 + t + phase) * amp +
+        Math.sin(x * 0.013 + t * 0.7) * 22;
+
+      top.push({x, y});
+      bottom.push({
+        x,
+        y: y + thick * Math.cos(x * 0.004 + t + phase)
+      });
+    }
+
+    ctx.beginPath();
+    top.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y));
+    bottom.reverse().forEach(p => ctx.lineTo(p.x, p.y));
+    ctx.closePath();
+
+    const grad = ctx.createLinearGradient(0, 0, w, 0);
+    grad.addColorStop(0, color1);
+    grad.addColorStop(0.35, color2);
+    grad.addColorStop(0.55, "rgba(255,255,255,0.45)");
+    grad.addColorStop(0.75, color2);
+    grad.addColorStop(1, color1);
+
+    ctx.fillStyle = grad;
+    ctx.fill();
+  }
+
+  function grain(){
+    for(let i = 0; i < 6500; i++){
+      ctx.fillStyle = Math.random() > 0.5
+        ? "rgba(255,255,255,0.26)"
+        : "rgba(255,255,255,0.12)";
+      ctx.fillRect(Math.random() * w, Math.random() * h, 1, 1);
+    }
+  }
+
+  function animate(){
+    ctx.clearRect(0, 0, w, h);
+
+    ribbon(
+      "rgba(79,141,255,0.05)",
+      "rgba(79,141,255,0.78)",
+      0,
+      55,
+      95,
+      0
+    );
+
+    ribbon(
+      "rgba(255,215,106,0.05)",
+      "rgba(255,195,65,0.72)",
+      Math.PI,
+      48,
+      85,
+      6
+    );
+
+    grain();
+
+    t += 0.01;
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+})();
+</script>
+
+
+
+<!-- WITHX AI Chatbot -->
+<div class="withx-chat-btn" onclick="toggleWithxChat()">
+    💬
+</div>
+
+<div class="withx-chatbox" id="withxChatbox">
+    <div class="withx-chat-header">
+        WITHX AI Assistant
+        <span onclick="toggleWithxChat()" style="cursor:pointer;">✕</span>
+    </div>
+
+    <div class="withx-chat-body" id="chatBody">
+        <div class="bot-msg">
+            Hello! Welcome to WITHX Innovations.<br>
+            How can I help you today?
+        </div>
+    </div>
+
+    <div class="withx-chat-input">
+        <input type="text" id="userMessage" placeholder="Ask your question..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+
+<script>
+function toggleWithxChat(){
+  const chat = document.getElementById("withxChatbox");
+  chat.style.display =
+    chat.style.display === "block" ? "none" : "block";
+}
+
+function sendMessage(){
+  const input = document.getElementById("userMessage");
+  const text = input.value.trim();
+
+  if(!text) return;
+
+  const chatBody = document.getElementById("chatBody");
+
+  chatBody.innerHTML += `
+    <div class="user-msg">${text}</div>
+  `;
+
+  let reply =
+    "Thank you for contacting WITHX. Our team will assist you shortly.";
+
+  if(text.toLowerCase().includes("product")){
+      reply="You can explore our products section for detailed information.";
+  }
+
+  if(text.toLowerCase().includes("contact")){
+      reply="You can contact WITHX via email or the contact form.";
+  }
+
+  if(text.toLowerCase().includes("service")){
+      reply="WITHX provides R&D, Manufacturing, Prototype Development and Industrial Design services.";
+  }
+
+  setTimeout(()=>{
+      chatBody.innerHTML += `
+        <div class="bot-msg">${reply}</div>
+      `;
+      chatBody.scrollTop = chatBody.scrollHeight;
+  },500);
+
+  input.value="";
+}
+</script>
+
+
+</body>
+</html>

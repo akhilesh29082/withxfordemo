@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects - WITHX Innovations</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
+
+:root{
+  --primary:#0b1e3a;
+  --accent:#3b82f6;
+  --bg:#f5f9ff;
+  --text:#111827;
+  --muted:#6b7280;
+  --card:#ffffff;
+  --line:#e5e7eb;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(59,130,246,.08), transparent 20%),
+    radial-gradient(circle at 85% 10%, rgba(14,165,233,.08), transparent 18%),
+    linear-gradient(rgba(15,23,42,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15,23,42,.03) 1px, transparent 1px);
+  background-size:auto, auto, 34px 34px, 34px 34px;
+  pointer-events:none;
+  z-index:-2;
+}
+
+.parallax-blob{
+  position:fixed;
+  border-radius:50%;
+  filter:blur(70px);
+  opacity:.18;
+  z-index:-1;
+  pointer-events:none;
+  will-change:transform;
+}
+
+.blob-1{width:280px;height:280px;background:#7dd3fc;top:8%;left:-4%;}
+.blob-2{width:240px;height:240px;background:#93c5fd;top:45%;right:-4%;}
+.blob-3{width:220px;height:220px;background:#bfdbfe;bottom:8%;left:38%;}
+
+nav{
+  position:fixed;top:0;width:100%;
+  display:flex;justify-content:space-between;
+  padding:18px 40px;background:rgba(255,255,255,.88);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);z-index:1000
+}
+nav a{margin-left:20px;text-decoration:none;color:#333}
+
+.hero{
+  height:68vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding-top:80px;
+  animation:fadeUp 1s ease;
+  background:linear-gradient(135deg, #e0f2fe 0%, #f0f7ff 40%, #ffffff 100%);
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 50% 35%, rgba(59,130,246,.08), transparent 26%);
+  pointer-events:none;
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+  transform:translateY(var(--heroShift, 0px));
+  transition:transform .12s linear;
+}
+
+.hero h1{font-size:3.4rem;color:var(--primary);animation:fadeUp 1.2s ease}
+.hero p{color:var(--muted);margin-top:10px;animation:fadeUp 1.4s ease;font-size:1.1rem}
+
+.hero-cards{
+  margin-top:28px;
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.hero-mini-card{
+  background:rgba(255,255,255,.8);
+  border:1px solid rgba(59,130,246,.12);
+  box-shadow:0 10px 24px rgba(0,0,0,.05);
+  border-radius:14px;
+  padding:14px 16px;
+  min-width:160px;
+  transform:translateY(var(--cardShift, 0px));
+  transition:transform .12s linear;
+}
+
+.hero-mini-card strong{display:block;color:var(--primary);margin-bottom:4px}
+.hero-mini-card span{color:var(--muted);font-size:.92rem}
+
+.section{padding:80px 10%;opacity:0;transform:translateY(40px);transition:all .8s ease}
+.section.show{opacity:1;transform:translateY(0)}
+.title{font-size:2rem;color:var(--primary);margin-bottom:20px}
+
+.project-list{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.project-item{
+  padding:22px 28px;
+  border-radius:14px;
+  background:var(--card);
+  border-left:5px solid var(--accent);
+  box-shadow:0 8px 25px rgba(0,0,0,0.05);
+  transition:transform .25s ease, background .25s ease, box-shadow .25s ease;
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+
+.project-item:hover{
+  transform:translateX(10px);
+  background:#f0f7ff;
+}
+
+.project-item h3{
+  margin-bottom:6px;
+  color:var(--primary);
+}
+
+.project-item p{
+  color:var(--muted);
+  font-size:0.95rem;
+}
+
+.highlight-strip{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.highlight{
+  flex:1;
+  min-width:200px;
+  padding:20px;
+  background:var(--card);
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 8px 20px rgba(0,0,0,0.05);
+  transition:transform .3s ease, box-shadow .3s ease;
+  will-change:transform;
+}
+.highlight:hover{transform:translateY(-8px)}
+
+.results{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+
+.result{
+  padding:25px;
+  background:var(--card);
+  border-radius:14px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.05);
+  transition:transform .35s ease, box-shadow .35s ease;
+  will-change:transform;
+}
+.result:hover{transform:translateY(-8px)}
+
+.result h4{color:var(--primary);margin-bottom:8px}
+.result p{color:var(--muted)}
+
+.cta{
+  text-align:center;
+}
+
+.btn{
+  padding:12px 24px;
+  border:none;
+  background:var(--accent);
+  color:white;
+  border-radius:8px;
+  margin-top:15px;
+  cursor:pointer;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(59,130,246,.24)}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@media(max-width:768px){
+  .results{grid-template-columns:1fr}
+  .hero{height:auto;min-height:60vh;padding-bottom:40px}
+  .hero h1{font-size:2.5rem}
+}
+</style>
+</head>
+<body>
+<div class="parallax-blob blob-1"></div>
+<div class="parallax-blob blob-2"></div>
+<div class="parallax-blob blob-3"></div>
+
+<nav>
+<div><b>WITHX</b></div>
+<div>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="services.html">Services</a>
+<a href="projects.html">Projects</a>
+<a href="research.html">Research</a>
+    <a href="contact.html">Contact</a>
+</div>
+</nav>
+
+<section class="hero">
+<div class="hero-inner" id="heroInner">
+<h1>Our Projects</h1>
+<p>Innovation-driven engineering solutions</p>
+<div class="hero-cards">
+  <div class="hero-mini-card"><strong>8 Projects</strong><span>Practical innovation lineup</span></div>
+  <div class="hero-mini-card"><strong>Real Prototypes</strong><span>Concepts shaped into outcomes</span></div>
+  <div class="hero-mini-card"><strong>Safer Systems</strong><span>Focused on useful engineering</span></div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="title project-title-dark">Project List</div>
+<div class="project-list">
+
+<div class="project-item"><h3>WITHX1 – Wada Maker Machine</h3><p>Efficiency-focused food automation concept.</p></div>
+<div class="project-item"><h3>WITHX2 – Intensity Cleaner</h3><p>Improved cleaning performance and usability.</p></div>
+<div class="project-item"><h3>WITHX3 – Army Defense Drone</h3><p>Smart aerial defense innovation concept.</p></div>
+<div class="project-item"><h3>WITHX4 – Lead Frame</h3><p>Structural and industrial design solution.</p></div>
+<div class="project-item"><h3>WITHX5 – Helmet Locking System</h3><p>Security-focused everyday product.</p></div>
+<div class="project-item"><h3>WITHX6 – Driver Rescue System</h3><p>Emergency safety and rescue innovation.</p></div>
+<div class="project-item"><h3>WITHX7 – Advanced Rescue System</h3><p>Enhanced rescue and protection system.</p></div>
+<div class="project-item"><h3>WITHX8 – Smart Dust Bin</h3><p>Modern smart waste management solution.</p></div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="title">Project Highlights</div>
+<div class="highlight-strip">
+<div class="highlight">Real Prototypes</div>
+<div class="highlight">Innovative Solutions</div>
+<div class="highlight">Industry-Focused Designs</div>
+</div>
+</section>
+
+<section class="section">
+<div class="title">Results</div>
+<div class="results">
+<div class="result"><h4>Improved Efficiency</h4><p>Optimized workflows and performance.</p></div>
+<div class="result"><h4>Reduced Labor Effort</h4><p>Minimized manual work.</p></div>
+<div class="result"><h4>Enhanced Safety</h4><p>Focus on protection and reliability.</p></div>
+<div class="result"><h4>Cost Reduction</h4><p>Efficient and economical design.</p></div>
+</div>
+</section>
+
+<section class="section cta">
+<h2>Let’s Build the Next Innovation</h2>
+ <button class="btn" onclick="window.location.href='contact.html'">Contact Us</button>
+</section>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+},{threshold:0.12});
+sections.forEach(section=>observer.observe(section));
+
+const blobs = document.querySelectorAll('.parallax-blob');
+const heroInner = document.getElementById('heroInner');
+const heroCards = document.querySelectorAll('.hero-mini-card');
+const tiltItems = document.querySelectorAll('.project-item, .highlight, .result');
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  blobs.forEach((blob, index) => {
+    const speed = (index + 1) * 0.08;
+    blob.style.transform = `translateY(${y * speed}px)`;
+  });
+
+  if(heroInner){
+    heroInner.style.setProperty('--heroShift', `${y * 0.12}px`);
+  }
+  heroCards.forEach((card, index) => {
+    const speed = (index + 1) * -0.04;
+    card.style.setProperty('--cardShift', `${y * speed}px`);
+  });
+});
+
+function addTiltEffect(element){
+  element.addEventListener('mousemove', (event) => {
+    const rect = element.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    const rotateX = ((y / rect.height) - 0.5) * -8;
+    const rotateY = ((x / rect.width) - 0.5) * 8;
+    element.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+  });
+
+  element.addEventListener('mouseleave', () => {
+    element.style.transform = '';
+  });
+}
+
+tiltItems.forEach(addTiltEffect);
+</script>
+</body>
+</html>
