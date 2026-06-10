@@ -299,7 +299,7 @@ nav.top-navbar .brand img{
 section{
 width:min(1200px,90%);
   margin:0 auto;
-  padding:100px 0;
+  padding:120px 0;
   position:relative;
   z-index:2;
   opacity:0;
@@ -338,54 +338,56 @@ section.show .cta-panel{opacity:1;transform:translateY(0);transition-delay:.22s;
 }
 
 .section-heading-panel{
-  padding:34px 32px;
+  padding:40px 38px;
   background:rgba(255,255,255,.9);
   border:1px solid rgba(255,255,255,.85);
   border-radius:30px;
-  margin-bottom:36px;
+  margin-bottom:48px;
 }
 
 .summary-section .section-heading-panel{
-  background:rgba(9,20,42,.92);
-  border-color:rgba(56,189,248,.18);
+  background:rgba(255,255,255,.92);
+  border-color:rgba(56,189,248,.25);
 }
 
 .summary-section .section-heading-panel .title,
 .summary-section .section-heading-panel .lead{
-  color:#f8fafc;
+  color:var(--primary);
 }
 
 .service-summary-grid{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:24px;
-  margin-top:40px;
+  gap:28px;
+  margin-top:48px;
 }
 
 .summary-card{
   padding:28px;
-  background:rgba(8,18,42,.96);
-  border:1px solid rgba(56,189,248,.28);
+  background:rgba(255,255,255,.95);
+  border:1px solid rgba(56,189,248,.35);
   border-radius:28px;
-  transition:transform .3s ease,border-color .3s ease;
+  transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;
   animation:cardFloat 18s ease-in-out infinite;
-  color:#f8fafc;
+  color:var(--primary);
+  box-shadow:0 0 40px rgba(56,189,248,.15), inset 0 0 40px rgba(56,189,248,.08);
 }
 
 .summary-card:hover{
   transform:translateY(-8px);
-  border-color:rgba(56,189,248,.42);
+  border-color:rgba(56,189,248,.55);
+  box-shadow:0 0 60px rgba(56,189,248,.25), inset 0 0 40px rgba(56,189,248,.12);
 }
 
 .summary-card h4{
   font-size:1.2rem;
   margin-bottom:12px;
-  color:#f8fafc;
+  color:var(--primary);
   text-shadow:none;
 }
 
 .summary-card p{
-  color:hsla(210,90%,93%,.92);
+  color:var(--muted);
   line-height:1.8;
 }
 
@@ -405,7 +407,7 @@ section.show .cta-panel{opacity:1;transform:translateY(0);transition-delay:.22s;
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:28px;
-  margin-top:38px;
+  margin-top:48px;
 }
 
 .service-card.premium{
@@ -428,8 +430,8 @@ section.show .cta-panel{opacity:1;transform:translateY(0);transition-delay:.22s;
 .process-cards{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:24px;
-  margin-top:30px;
+  gap:28px;
+  margin-top:48px;
 }
 
 .process-card{
@@ -582,7 +584,8 @@ justify-self:center;
 .highlight-grid{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:22px;
+  gap:28px;
+  margin-top:48px;
 }
 .highlight-card{
   padding:28px;
@@ -787,6 +790,7 @@ justify-self:center;
   <div class="nav-left">
     <a class="brand" href="index.html" aria-label="WITHX Home">
       <span class="brand-logo-box"><img src="https://i.ibb.co/BVTS9KXY/image-removebg-preview-4.png" alt="WITHX Logo"></span>
+      <span class="brand-text">WITHX</span>
     </a>
 
     <div class="nav-links">
