@@ -289,6 +289,23 @@ nav a{margin-left:20px;text-decoration:none;color:#333}
 .hero-mini-card strong{display:block;color:var(--primary);margin-bottom:4px}
 .hero-mini-card span{color:var(--muted);font-size:.92rem}
 
+@keyframes floatSmooth{
+  0%, 100%{transform:translateY(0px)}
+  50%{transform:translateY(-14px)}
+}
+
+.hero-mini-card:first-child{
+  animation:floatSmooth 3.4s ease-in-out infinite;
+  background:rgba(173,216,230,.25);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(59,130,246,.35);
+  box-shadow:0 18px 45px rgba(30,58,138,.22), inset 0 1px 0 rgba(255,255,255,.3);
+}
+
+.hero-mini-card:first-child:hover{
+  box-shadow:0 22px 55px rgba(30,58,138,.28), inset 0 1px 0 rgba(255,255,255,.3);
+}
+
 .section{padding:80px 10%;opacity:0;transform:translateY(40px);transition:all .8s ease}
 .section.show{opacity:1;transform:translateY(0)}
 .title{font-size:2rem;color:var(--primary);margin-bottom:16px}
@@ -297,8 +314,15 @@ nav a{margin-left:20px;text-decoration:none;color:#333}
 .products-grid{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:24px;
+  gap:14px;
   margin-top:28px;
+}
+
+@keyframes converge{
+  0%{transform:translateX(0) scale(1)}
+  40%{transform:translateX(var(--convergeX, 0)) scale(0.95)}
+  60%{transform:translateX(var(--convergeX, 0)) scale(0.95)}
+  100%{transform:translateX(0) scale(1)}
 }
 
 .product-card{
@@ -306,13 +330,13 @@ nav a{margin-left:20px;text-decoration:none;color:#333}
   border:1px solid var(--line);
   border-radius:20px;
   overflow:hidden;
-  box-shadow:0 12px 30px rgba(0,0,0,.05);
-  transition:transform .28s ease, box-shadow .28s ease;
+  box-shadow:0 18px 50px rgba(15,23,80,.18);
+  transition:transform .5s ease-out, box-shadow .28s ease;
   transform-style:preserve-3d;
   will-change:transform;
+  transform:translateX(var(--convergeX, 0px)) scale(var(--convergeScale, 1));
 }
 .product-card:hover{
-  transform:translateY(-8px);
   box-shadow:0 18px 40px rgba(59,130,246,.12);
 }
 .product-media{
@@ -627,6 +651,47 @@ window.addEventListener('scroll', () => {
     const speed = (index + 1) * -0.04;
     card.style.setProperty('--cardShift', `${y * speed}px`);
   });
+
+  // Move "4 Products" card down as you scroll
+  const firstCard = document.querySelector('.hero-mini-card:first-child');
+  const productSection = document.querySelector('.products-grid');
+  
+  if(firstCard && productSection){
+    const heroSection = document.querySelector('.hero');
+    const heroRect = heroSection.getBoundingClientRect();
+    const gridRect = productSection.getBoundingClientRect();
+    
+    // Calculate scroll progress relative to product section
+    const productSectionTop = gridRect.top + window.scrollY;
+    const heroSectionBottom = heroRect.bottom + window.scrollY;
+    const scrollStartPoint = heroSectionBottom;
+    const scrollEndPoint = productSectionTop;
+    
+    const scrollDistance = scrollEndPoint - scrollStartPoint;
+    const currentScroll = y - scrollStartPoint;
+    const scrollProgress = Math.max(0, Math.min(1, currentScroll / scrollDistance));
+    
+    // Move the card down between hero and products
+    const moveDistance = scrollProgress * 200;
+    firstCard.style.transform = `translateY(${moveDistance}px)`;
+  }
+
+  const productGridElement = document.querySelector('.products-grid');
+  if(productGridElement){
+    const rect = productGridElement.getBoundingClientRect();
+    const center = window.innerHeight / 2;
+    const distFromCenter = rect.top - center;
+    const scrollProg = Math.max(0, Math.min(1, 1 - (distFromCenter / window.innerHeight)));
+    
+    document.querySelectorAll('.product-card').forEach((card, index) => {
+      const isLeft = index % 2 === 0;
+      const direction = isLeft ? -1 : 1;
+      const maxOffset = 100;
+      const spreadAmount = scrollProg * maxOffset * direction;
+      card.style.setProperty('--convergeX', `${spreadAmount}px`);
+      card.style.setProperty('--convergeScale', 0.95 + (scrollProg * 0.05));
+    });
+  }
 });
 
 function addTiltEffect(element){
