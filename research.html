@@ -311,16 +311,24 @@ nav.top-navbar .brand img{
   min-width:130px;
   padding:12px 14px;
   border-radius:18px;
-  background:rgba(255,255,255,.86);
+  background:rgba(255,255,255,.92);
   border:1px solid rgba(10,31,68,.08);
   box-shadow:0 16px 36px rgba(10,31,68,.08);
   color:var(--primary);
   font-weight:600;
+  pointer-events:none;
+  z-index:3;
+  transition:box-shadow .2s ease, border-color .2s ease, transform .2s ease;
 }
-.chip-a{top:16%;left:10%}
-.chip-b{top:22%;right:8%}
-.chip-c{bottom:18%;left:14%}
-.chip-d{bottom:14%;right:10%}
+.floating-chip.collide{
+  border-color:rgba(56,189,248,.7);
+  box-shadow:0 20px 48px rgba(56,189,248,.35), 0 0 0 4px rgba(56,189,248,.12);
+  transform:scale(1.03);
+}
+.chip-a{top:18%;left:12%}
+.chip-b{top:22%;left:66%}
+.chip-c{top:62%;left:16%}
+.chip-d{top:64%;left:64%}
 
 section{
   width:min(var(--max),calc(100% - 40px));
@@ -728,7 +736,7 @@ if(heroVisual && visualFrame && window.innerWidth > 980){
   });
 }
 
-const parallaxTargets = document.querySelectorAll('.orb, .floating-chip');
+const parallaxTargets = document.querySelectorAll('.orb');
 window.addEventListener('scroll', () => {
   const y = window.scrollY;
   parallaxTargets.forEach((element, idx) => {
@@ -741,6 +749,121 @@ window.addEventListener('scroll', () => {
     heroCopy.style.setProperty('--heroShift', `${y * 0.08}px`);
   }
 });
+
+const floatingChips = Array.from(document.querySelectorAll('.floating-chip'));
+const chipContainer = document.getElementById('visualFrame');
+if (floatingChips.length && chipContainer) {
+  const chips = floatingChips.map((el, idx) => ({
+    el,
+    x: 0,
+    y: 0,
+    vx: 0,
+    vy: 0,
+    width: 0,
+    height: 0,
+    timeout: null,
+  }));
+
+  const setInitialState = () => {
+    const bounds = chipContainer.getBoundingClientRect();
+    chips.forEach((chip, idx) => {
+      const style = window.getComputedStyle(chip.el);
+      const left = parseFloat(style.left);
+      const top = parseFloat(style.top);
+      chip.width = chip.el.offsetWidth;
+      chip.height = chip.el.offsetHeight;
+      chip.x = Number.isFinite(left) ? left : (idx % 2 ? bounds.width * 0.68 : bounds.width * 0.12);
+      chip.y = Number.isFinite(top) ? top : (idx < 2 ? bounds.height * 0.18 : bounds.height * 0.62);
+      const angle = Math.random() * Math.PI * 2;
+      const speed = 18 + Math.random() * 12;
+      chip.vx = Math.cos(angle) * speed;
+      chip.vy = Math.sin(angle) * speed;
+      chip.el.style.left = `${chip.x}px`;
+      chip.el.style.top = `${chip.y}px`;
+    });
+  };
+
+  const bounceChip = (chip, bounds) => {
+    const margin = 10;
+    const maxX = bounds.width - chip.width - margin;
+    const maxY = bounds.height - chip.height - margin;
+
+    if (chip.x <= margin) {
+      chip.x = margin;
+      chip.vx = Math.abs(chip.vx);
+    } else if (chip.x >= maxX) {
+      chip.x = maxX;
+      chip.vx = -Math.abs(chip.vx);
+    }
+
+    if (chip.y <= margin) {
+      chip.y = margin;
+      chip.vy = Math.abs(chip.vy);
+    } else if (chip.y >= maxY) {
+      chip.y = maxY;
+      chip.vy = -Math.abs(chip.vy);
+    }
+  };
+
+  const applyCollisionEffect = (chip) => {
+    chip.el.classList.add('collide');
+    clearTimeout(chip.timeout);
+    chip.timeout = setTimeout(() => chip.el.classList.remove('collide'), 220);
+  };
+
+  const resolveCollision = (a, b) => {
+    const nx = (a.x + a.width / 2) - (b.x + b.width / 2);
+    const ny = (a.y + a.height / 2) - (b.y + b.height / 2);
+    const dist = Math.max(Math.hypot(nx, ny), 1);
+    const relativeVelocity = (a.vx - b.vx) * (nx / dist) + (a.vy - b.vy) * (ny / dist);
+    if (relativeVelocity > 0) return;
+    const impulse = relativeVelocity * -1;
+    const normalX = nx / dist;
+    const normalY = ny / dist;
+    a.vx += normalX * impulse;
+    a.vy += normalY * impulse;
+    b.vx -= normalX * impulse;
+    b.vy -= normalY * impulse;
+    applyCollisionEffect(a);
+    applyCollisionEffect(b);
+  };
+
+  const updateAnimation = (time) => {
+    const bounds = chipContainer.getBoundingClientRect();
+    if (!updateAnimation.lastTime) updateAnimation.lastTime = time;
+    const delta = Math.min((time - updateAnimation.lastTime) / 1000, 0.05);
+    updateAnimation.lastTime = time;
+
+    chips.forEach((chip) => {
+      chip.width = chip.el.offsetWidth;
+      chip.height = chip.el.offsetHeight;
+      chip.x += chip.vx * delta;
+      chip.y += chip.vy * delta;
+      bounceChip(chip, bounds);
+    });
+
+    for (let i = 0; i < chips.length; i += 1) {
+      for (let j = i + 1; j < chips.length; j += 1) {
+        const a = chips[i];
+        const b = chips[j];
+        if (a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y) {
+          resolveCollision(a, b);
+        }
+      }
+    }
+
+    chips.forEach((chip) => {
+      chip.el.style.left = `${chip.x}px`;
+      chip.el.style.top = `${chip.y}px`;
+    });
+
+    requestAnimationFrame(updateAnimation);
+  };
+
+  setInitialState();
+  window.addEventListener('resize', setInitialState);
+  requestAnimationFrame(updateAnimation);
+}
 </script>
 </body>
 </html>
