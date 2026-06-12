@@ -1300,6 +1300,165 @@ input:focus,textarea:focus{
 .menu-btn{display:block}
 }
 
+
+/* ===== FINAL WELL-MANAGED CARD LAYOUT PATCH ===== */
+.section-top{
+  text-align:center;
+  margin:0 auto 42px;
+}
+
+.section-top p{
+  max-width:720px;
+  margin:0 auto;
+}
+
+.stagger-grid{
+  display:grid !important;
+  grid-template-columns:repeat(4, minmax(0, 1fr)) !important;
+  gap:26px !important;
+  max-width:1200px;
+  margin:0 auto;
+  align-items:stretch;
+}
+
+.stagger-grid .card{
+  max-width:none !important;
+  min-height:380px !important;
+}
+
+.card{
+  display:flex !important;
+  flex-direction:column !important;
+  height:100%;
+  gap:10px;
+}
+
+.card img.card-image,
+.card-image{
+  width:100% !important;
+  height:180px !important;
+  object-fit:cover !important;
+  border-radius:16px !important;
+  flex-shrink:0;
+}
+
+.card strong{
+  display:block;
+  font-size:1.08rem;
+  line-height:1.35;
+  color:#000;
+  margin-top:4px;
+}
+
+.card span,
+.card div{
+  line-height:1.65;
+}
+
+.product-showcase{
+  display:grid !important;
+  grid-template-columns:minmax(0, 1fr) minmax(0, 1fr) !important;
+  gap:28px !important;
+  align-items:stretch !important;
+}
+
+.feature-card{
+  min-height:100% !important;
+}
+
+.feature-card .card-image{
+  height:300px !important;
+}
+
+.product-stack{
+  display:grid !important;
+  grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+  gap:24px !important;
+}
+
+.product-stack .card span{
+  display:-webkit-box;
+  -webkit-line-clamp:4;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+.card .btn{
+  margin-top:auto !important;
+  align-self:flex-start;
+  text-decoration:none !important;
+}
+
+.carousel{
+  display:grid !important;
+  grid-template-columns:repeat(4, minmax(0, 1fr)) !important;
+  gap:26px !important;
+  overflow:visible !important;
+  padding:0 !important;
+}
+
+.carousel .card{
+  min-width:0 !important;
+  max-width:none !important;
+  height:100% !important;
+}
+
+.tag{
+  margin-top:auto !important;
+  width:max-content;
+}
+
+#contact-panel .contact-grid{
+  max-width:720px;
+  margin:0 auto;
+}
+
+@media(max-width:1100px){
+  .stagger-grid,
+  .carousel{
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .product-showcase{
+    grid-template-columns:1fr !important;
+  }
+}
+
+@media(max-width:700px){
+  .section-top{
+    text-align:left;
+    margin-bottom:28px;
+  }
+
+  .section-top p{
+    margin:0;
+  }
+
+  .stagger-grid,
+  .carousel,
+  .product-stack{
+    grid-template-columns:1fr !important;
+  }
+
+  .stagger-grid .card{
+    min-height:auto !important;
+  }
+
+  .card{
+    padding:20px !important;
+  }
+
+  .card img.card-image,
+  .card-image{
+    height:170px !important;
+  }
+
+  .feature-card .card-image{
+    height:210px !important;
+  }
+}
+/* ===== END FINAL WELL-MANAGED CARD LAYOUT PATCH ===== */
+
 </style>
 </head>
 <body>
@@ -1379,7 +1538,7 @@ input:focus,textarea:focus{
     </div>
     <div class="card" onclick="window.location.href='services.html'" style="cursor:pointer;">
       <img class="card-image" src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1200&q=80" alt="Research and development">
-      <div>🔬 <strong>Research & amp; Development</strong></div>
+      <div>🔬 <strong>Research &amp; Development</strong></div>
       <div style="color:var(--muted);margin-top:10px;">Research-backed exploration, concept refinement, and technical innovation.</div>
     </div>
     <div class="card" onclick="window.location.href='services.html'" style="cursor:pointer;">
@@ -1402,7 +1561,7 @@ input:focus,textarea:focus{
   </div>
   <div class="product-showcase">
     <div class="card feature-card" onclick="window.location.href='products.html'" style="cursor:pointer;">
-      <img class="card-image" src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1400&q=80" alt="Utensil cleaner" style="height:320px;">
+      <img class="card-image" src="https://i.ibb.co/218RTVxk/Whats-App-Image-2026-06-11-at-1-56-19-PM.jpg" alt="Utensil cleaner" style="height:320px;">
       <strong style="font-size:1.35rem;display:block;margin-bottom:10px;">Multifunctional Utensil Cleaner</strong>
       <span style="opacity:.78;line-height:1.8;display:block;">A utility-focused concept designed to improve everyday cleaning efficiency with a practical engineering approach.</span>
      <a href="products.html" class="btn" style="margin-top:12px; display:inline-block; text-decoration:none;">
@@ -1411,7 +1570,7 @@ View Product
     </div>
     <div class="product-stack">
       <div class="card" onclick="window.location.href='products.html'" style="cursor:pointer;">
-        <img class="card-image" src="https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=1200&q=80" alt="Food machine">
+        <img class="card-image" src="https://i.ibb.co/S4jMGRr6/Screenshot-2026-06-11-145657.png" alt="Food machine">
         <strong>Wada Maker Machine</strong><br>
         <span style="opacity:.75;">Consistency and speed focused machine concept.</span>
       <a href="products.html" class="btn" style="margin-top:12px; display:inline-block; text-decoration:none;">
@@ -1453,13 +1612,13 @@ View Product
     </div>
 
    <div class="card" onclick="window.location.href='projects.html'" style="cursor:pointer;">
-      <img class="card-image" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80">
+      <img class="card-image" src="https://i.ibb.co/S4jMGRr6/Screenshot-2026-06-11-145657.png">
       <strong>WITHX2</strong>
       <div class="tag">Wada Maker Machine</div>
     </div>
 
    <div class="card" onclick="window.location.href='projects.html'" style="cursor:pointer;">
-      <img class="card-image" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80">
+      <img class="card-image" src="https://i.ibb.co/LhrVMCLk/Screenshot-2026-06-11-143159.png">
       <strong>WITHX3</strong>
       <div class="tag">Lead Frame Manufacturing</div>
     </div>
@@ -1471,63 +1630,11 @@ View Product
     </div>
 
 
-    <!--
-    
-   <div class="card" onclick="window.location.href='projects.html'" style="cursor:pointer;">
-      <img class="card-image" src="https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&w=1200&q=80">
-      <strong>WITHX5</strong>
-      <div class="tag">Innovation Prototype Lab</div>
-    </div>
-   
-<div class="card" onclick="window.location.href='projects.html'" style="cursor:pointer;">
-      <img class="card-image" src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1200&q=80">
-      <strong>WITHX6</strong>
-      <div class="tag">Advanced Manufacturing Line</div>
-    </div>
-
-   <div class="card" onclick="window.location.href='projects.html'" style="cursor:pointer;">
-      <img class="card-image" src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80">
-      <strong>WITHX7</strong>
-      <div class="tag">Research & Testing Module</div>
-    </div>
-
-    <div class="card" onclick="window.location.href='projects.html'" style="cursor:pointer;">
-      <img class="card-image" src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=1200&q=80">
-      <strong>WITHX8</strong>
-      <div class="tag">Smart Control Systems Hub</div>
-    </div>
-
-<div class="card" onclick="window.location.href='projects.html'" style="cursor:pointer;">
-      <img class="card-image" src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80">
-      <strong>WITHX9</strong>
-      <div class="tag">Intelligent Engineering Solutions</div>
-    </div>
-
- <div class="card" onclick="window.location.href='projects.html'" style="cursor:pointer;">
-      <img class="card-image" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80">
-      <strong>WITHX10</strong>
-      <div class="tag">Corporate Process Optimizer</div>
-    </div>
-
-<div class="card" onclick="window.location.href='projects.html'" style="cursor:pointer;">
-      <img class="card-image" src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80">
-      <strong>WITHX11</strong>
-      <div class="tag">Team Productivity Ecosystem</div>
-    </div>
-
-<div class="card" onclick="window.location.href='projects.html'" style="cursor:pointer;">
-      <img class="card-image" src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=80">
-      <strong>WITHX12</strong>
-      <div class="tag">Smart Consumer Product Seriess</div>
-    </div>
-
-
   </div>
 </section>
-  
--->
 
-    
+<!-- Future project cards can be added here later. -->
+
 <section class="center" id="cta">
   <div class="section-top">
     <div class="title">Let’s Build With Purpose</div>
@@ -1610,7 +1717,7 @@ View Product
       <h3>WITHX INNOVATIONS</h3>
       <p>
         WITHX Innovations Private Limited is an engineering-driven company
-        focused on research & amp; development, manufacturing solutions,
+        focused on research &amp; development, manufacturing solutions,
         industrial design, product innovation and advanced technology development.
       </p>
     </div>
