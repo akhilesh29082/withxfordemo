@@ -90,7 +90,7 @@ body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle
 <div class="parallax-blob blob-1"></div><div class="parallax-blob blob-2"></div><div class="parallax-blob blob-3"></div>
 <nav class="top-navbar">
   <div class="nav-left">
-    <a class="brand" href="index.html" aria-label="WITHX Home"><span class="brand-logo-box"><img src="https://i.ibb.co/BVTS9KXY/image-removebg-preview-4.png" alt="WITHX Logo"></span></a>
+    <a class="brand" href="index.html" aria-label="WITHX Home"><span class="brand-logo-box"><img src="https://i.ibb.co/5gCTxNtx/Whats-App-Image-2026-06-09-at-12-19-38-PM.jpg" alt="WITHX Logo"></span></a>
     <div class="nav-links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="products.html" class="active">Products</a><a href="projects.html">Projects</a><a href="research.html">Research</a><a href="contact.html">Contact</a></div>
   </div>
   <div class="nav-right"><button id="menuBtn" class="menu-btn">☰</button><a class="ask-btn" href="contact.html">Ask WITHX</a><a href="about.html">About</a></div>
@@ -153,7 +153,6 @@ body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle
 
 </div>
 </section>
-<section class="section cta"><h2>Need help choosing the right product?</h2><br><a class="btn" href="contact.html">Contact Us</a></section>
 <div class="modal details-modal" id="detailsModal" aria-hidden="true">
   <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="detailsTitle">
     <button class="modal-close" id="closeDetails" aria-label="Close product details">✕</button>
@@ -284,6 +283,12 @@ function closeDetailsModal(){detailsModal.classList.remove('open');document.body
 function closeMediaModal(){mediaModal.classList.remove('open');document.body.classList.remove('modal-active');mediaModal.setAttribute('aria-hidden','true');const video=modalVideoBox.querySelector('video');if(video){video.pause()}}
 if(prevSlide){prevSlide.addEventListener('click',()=>showSlide(currentSlide===0?1:0))}if(nextSlide){nextSlide.addEventListener('click',()=>showSlide(currentSlide===0?1:0))}slideDots.forEach(dot=>dot.addEventListener('click',()=>showSlide(Number(dot.dataset.slide))))
 document.querySelectorAll('[data-product]').forEach(button=>{button.addEventListener('click',(event)=>{event.stopPropagation();openDetailsModal(button)});const card=button.closest('.product-card');if(card){const media=card.querySelector('.product-media');if(media){media.addEventListener('click',(event)=>{event.stopPropagation();openMediaModal(button)})}card.addEventListener('keydown',(event)=>{if(event.key==='Enter'){openDetailsModal(button)}})}});closeDetails.addEventListener('click',closeDetailsModal);if(closeDetailsBottom){closeDetailsBottom.addEventListener('click',closeDetailsModal)}closeMedia.addEventListener('click',closeMediaModal);detailsModal.addEventListener('click',(event)=>{if(event.target===detailsModal){closeDetailsModal()}});mediaModal.addEventListener('click',(event)=>{if(event.target===mediaModal){closeMediaModal()}});document.addEventListener('keydown',(event)=>{if(event.key==='Escape'){if(detailsModal.classList.contains('open')) closeDetailsModal();if(mediaModal.classList.contains('open')) closeMediaModal();}});
+const menuBtn=document.getElementById('menuBtn');
+const mobileMenu=document.getElementById('mobileMenu');
+if(menuBtn && mobileMenu){
+  menuBtn.addEventListener('click',()=>mobileMenu.classList.toggle('show'));
+  document.querySelectorAll('#mobileMenu a').forEach((link)=>link.addEventListener('click',()=>mobileMenu.classList.remove('show')));
+}
 </script>
 </body>
 </html>
