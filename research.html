@@ -470,17 +470,23 @@ section.show{opacity:1;transform:translateY(0)}
   .visual-frame{transform:none}
 }
 
+@media(max-width:900px){
+  .top-navbar{height:auto;padding:18px 22px;flex-direction:row;align-items:center}
+  .nav-links,.ask-btn,.nav-right>a[href="about.html"]{display:none}
+  .menu-btn{display:block}
+  .nav-left,.nav-right{gap:18px}
+  .hero{padding-top:130px}
+  .footer-container{grid-template-columns:1fr}
+}
+
 @media (max-width: 720px){
-  nav{padding:14px 18px;gap:10px;flex-direction:column;align-items:flex-start}
-  nav div:last-child{display:flex;flex-wrap:wrap;gap:8px}
-  nav a{margin-left:0;font-size:.88rem}
   .hero{padding-top:150px}
   .hero-copy,.research-card,.tech-card,.innovation-card,.patent-item,.cta-panel{padding:22px 18px}
   section{width:min(var(--max),calc(100% - 24px));padding:72px 0}
   .hero-metrics,
   .research-grid,
   .tech-strip{grid-template-columns:1fr}
-  .floating-chip{position:relative;inset:auto;min-width:auto}
+  .floating-chip{min-width:auto;font-size:0.85rem;padding:8px 12px}
 }
 </style>
 </head>
@@ -501,16 +507,18 @@ section.show{opacity:1;transform:translateY(0)}
       <a href="services.html">Services</a>
       <a href="products.html">Products</a>
       <a href="projects.html">Projects</a>
-      <a href="research.html">Research</a>
+      <a href="research.html" class="active">Research</a>
       <a href="contact.html">Contact</a>
     </div>
   </div>
 
   <div class="nav-right">
+    <button id="menuBtn" class="menu-btn">☰</button>
     <a class="ask-btn" href="contact.html">Ask WITHX</a>
     <a href="about.html">About</a>
   </div>
 </nav>
+<div id="mobileMenu" class="mobile-menu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="products.html">Products</a><a href="projects.html">Projects</a><a href="research.html">Research</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
 
 
 <section class="hero" id="home">
@@ -872,7 +880,9 @@ if (floatingChips.length && chipContainer) {
         const a = chips[i];
         const b = chips[j];
         if (a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y) {
-          resolveCollision(a, b);
+          if (window.innerWidth > 768) {
+            resolveCollision(a, b);
+          }
         }
       }
     }
@@ -888,6 +898,13 @@ if (floatingChips.length && chipContainer) {
   setInitialState();
   window.addEventListener('resize', setInitialState);
   requestAnimationFrame(updateAnimation);
+}
+
+const menuBtn=document.getElementById('menuBtn');
+const mobileMenu=document.getElementById('mobileMenu');
+if(menuBtn && mobileMenu){
+  menuBtn.addEventListener('click',()=>mobileMenu.classList.toggle('show'));
+  document.querySelectorAll('#mobileMenu a').forEach((link)=>link.addEventListener('click',()=>mobileMenu.classList.remove('show')));
 }
 </script>
 </body>
