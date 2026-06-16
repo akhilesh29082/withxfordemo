@@ -204,44 +204,12 @@ main,
 
 @media(max-width:900px){
   .top-navbar{
-    height:auto !important;
-    padding:18px 22px !important;
-    flex-direction:column !important;
-    align-items:flex-start !important;
-    gap:18px !important;
+    height:auto !important;padding:18px 22px !important;flex-direction:row !important;align-items:center !important;
   }
-
-  .nav-left,
-  .nav-right{
-    width:100% !important;
-    flex-direction:column !important;
-    align-items:flex-start !important;
-    gap:16px !important;
-  }
-
-  .brand{
-    font-size:22px !important;
-  }
-
-  .brand-logo-box{
-    height:50px !important;
-    min-width:70px !important;
-  }
-
-  .nav-links{
-    width:100% !important;
-    display:flex !important;
-    flex-wrap:wrap !important;
-    gap:16px 22px !important;
-  }
-
-  .top-navbar a{
-    font-size:15px !important;
-  }
-
-  .ask-btn{
-    padding:12px 22px !important;
-  }
+  .nav-links,.ask-btn,.nav-right>a[href="about.html"]{display:none !important}
+  .menu-btn{display:block !important; color:#fff !important;}
+  .nav-left,.nav-right{gap:18px !important; width:auto !important; flex-direction:row !important; align-items:center !important;}
+  .footer-container{grid-template-columns:1fr !important}
 
   .hero,
   .page-hero,
@@ -1256,16 +1224,10 @@ input:focus,textarea:focus{
 
 
 /* GENERATED MOBILE MENU PATCH */
-.menu-btn{display:none;background:none;border:none;font-size:30px;cursor:pointer;color:#111;padding:0;line-height:1}
-.mobile-menu{position:fixed;top:58px;left:0;width:100%;background:#fff;display:none;flex-direction:column;z-index:5000;box-shadow:0 10px 30px rgba(0,0,0,.08)}
-.mobile-menu a{padding:18px 24px;text-decoration:none;color:#111;border-bottom:1px solid #eee;font-weight:600}
+.menu-btn{display:none;background:none;border:none;color:#0b0d10 !important;font-size:30px;cursor:pointer;padding:0;line-height:1}
+.mobile-menu{position:fixed;top:88px;left:0;width:100%;background:#0b0d10;display:none;flex-direction:column;z-index:5000;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.mobile-menu a{padding:18px 24px;text-decoration:none;color:#fff;border-bottom:1px solid rgba(255,255,255,.08);font-weight:600}
 .mobile-menu.show{display:flex}
-@media (max-width:768px){
-.nav-links{display:none !important}
-.ask-btn{display:none !important}
-.nav-right a[href="about.html"]{display:none !important}
-.menu-btn{display:block}
-}
 
 
 /* ===== FINAL WELL-MANAGED CARD LAYOUT PATCH ===== */
