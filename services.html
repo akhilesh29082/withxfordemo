@@ -624,10 +624,15 @@ justify-self:center;
   .float-card.top{right:4%}
   .float-card.bottom{left:4%}
 }
+@media(max-width:900px){
+  .top-navbar{height:auto;padding:18px 22px;flex-direction:row;align-items:center}
+  .nav-links,.ask-btn,.nav-right>a[href="about.html"]{display:none}
+  .menu-btn{display:block}
+  .nav-left,.nav-right{gap:18px}
+  .hero{padding-top:130px}
+  .footer-container{grid-template-columns:1fr}
+}
 @media(max-width:720px){
-  nav{padding:14px 18px;gap:10px;flex-direction:column;align-items:flex-start}
-  nav div:last-child{display:flex;flex-wrap:wrap;gap:8px}
-  nav a{margin-left:0;font-size:.88rem}
   .hero{padding-top:150px}
   .hero-copy,.service-feature,.service-card,.process-panel,.highlight-card,.cta-panel{padding:24px 20px}
   .highlight-grid{grid-template-columns:1fr}
@@ -678,7 +683,7 @@ justify-self:center;
 
     <div class="nav-links">
       <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
+      <a href="services.html" class="active">Services</a>
       <a href="products.html">Products</a>
       <a href="projects.html">Projects</a>
       <a href="research.html">Research</a>
@@ -687,10 +692,12 @@ justify-self:center;
   </div>
 
   <div class="nav-right">
+    <button id="menuBtn" class="menu-btn">☰</button>
     <a class="ask-btn" href="contact.html">Ask WITHX</a>
     <a href="about.html">About</a>
   </div>
 </nav>
+<div id="mobileMenu" class="mobile-menu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="products.html">Products</a><a href="projects.html">Projects</a><a href="research.html">Research</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
 
 
 <section class="hero show">
@@ -825,6 +832,13 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.14 });
 sections.forEach((section) => observer.observe(section));
+
+const menuBtn=document.getElementById('menuBtn');
+const mobileMenu=document.getElementById('mobileMenu');
+if(menuBtn && mobileMenu){
+  menuBtn.addEventListener('click',()=>mobileMenu.classList.toggle('show'));
+  document.querySelectorAll('#mobileMenu a').forEach((link)=>link.addEventListener('click',()=>mobileMenu.classList.remove('show')));
+}
 </script>
 </body>
 </html>
