@@ -636,7 +636,11 @@ justify-self:center;
   .hero{padding-top:150px}
   .hero-copy,.service-feature,.service-card,.process-panel,.highlight-card,.cta-panel{padding:24px 20px}
   .highlight-grid{grid-template-columns:1fr}
-  .float-card{position:relative;inset:auto;margin-top:14px;width:100%}
+  .float-card{position:absolute;margin-top:0;width:190px;padding:12px;z-index:10;}
+  .float-card.top{top:4%;right:2%;bottom:auto;left:auto;}
+  .float-card.bottom{bottom:4%;left:2%;top:auto;right:auto;}
+  .float-card small{font-size:0.75rem;margin-bottom:4px;}
+  .float-card strong{font-size:0.85rem;}
   section{
 width:100%;
 max-width:1280px;
