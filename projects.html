@@ -132,14 +132,36 @@ body::before{
   animation:fadeUp 1s ease forwards;
 }
 
+.hero-title-wrap{
+  position:relative;
+  display:inline-block;
+  margin-bottom:18px;
+  z-index:1;
+}
+
+.projects-wave-canvas{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%);
+  width:380px;
+  height:120px;
+  z-index:-1;
+  pointer-events:none;
+}
+
 .hero h1{
+  position:relative;
+  z-index:2;
   font-size:clamp(2.8rem,6vw,5rem);
   color:var(--primary);
-  margin-bottom:18px;
+  margin-bottom:0;
   letter-spacing:-.04em;
 }
 
 .hero p{
+  position:relative;
+  z-index:2;
   color:var(--muted);
   font-size:1.15rem;
   max-width:780px;
@@ -541,7 +563,10 @@ body::before{
 
 <section class="hero">
   <div class="hero-content">
-    <h1>Our Projects</h1>
+    <div class="hero-title-wrap">
+      <canvas id="projectsWaveCanvas" class="projects-wave-canvas"></canvas>
+      <h1>Our Projects</h1>
+    </div>
     <p>
       WITHX Innovations develops practical engineering projects focused on automation,
       product design, defence technology, safety systems, and real-world problem solving.
@@ -738,6 +763,76 @@ if(menuBtn && mobileMenu){
   menuBtn.addEventListener('click',()=>mobileMenu.classList.toggle('show'));
   document.querySelectorAll('#mobileMenu a').forEach((link)=>link.addEventListener('click',()=>mobileMenu.classList.remove('show')));
 }
+</script>
+<script>
+// WITHX Premium Blue-Gold Particle Ribbon Wave (Small)
+(function(){
+  const canvas = document.getElementById("projectsWaveCanvas");
+  if(!canvas) return;
+
+  const ctx = canvas.getContext("2d");
+  let w, h, t = 0;
+
+  function resize(){
+    w = canvas.width = 380;
+    h = canvas.height = 120;
+  }
+
+  resize();
+  window.addEventListener("resize", resize);
+
+  function ribbon(color1, color2, phase, amp, thick, yShift){
+    const top = [];
+    const bottom = [];
+
+    for(let x = -20; x <= w + 20; x += 4){
+      const y = h / 2 + yShift +
+        Math.sin(x * 0.006 + t + phase) * (amp * 0.4) +
+        Math.sin(x * 0.013 + t * 0.7) * (22 * 0.4);
+
+      top.push({x, y});
+      bottom.push({
+        x,
+        y: y + (thick * 0.4) * Math.cos(x * 0.004 + t + phase)
+      });
+    }
+
+    ctx.beginPath();
+    top.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y));
+    bottom.reverse().forEach(p => ctx.lineTo(p.x, p.y));
+    ctx.closePath();
+
+    const grad = ctx.createLinearGradient(0, 0, w, 0);
+    grad.addColorStop(0, color1);
+    grad.addColorStop(0.35, color2);
+    grad.addColorStop(0.55, "rgba(255,255,255,0.45)");
+    grad.addColorStop(0.75, color2);
+    grad.addColorStop(1, color1);
+
+    ctx.fillStyle = grad;
+    ctx.fill();
+  }
+
+  function grain(){
+    for(let i = 0; i < 3000; i++){
+      ctx.fillStyle = Math.random() > 0.5 ? "rgba(255,255,255,0.26)" : "rgba(255,255,255,0.12)";
+      ctx.fillRect(Math.random() * w, Math.random() * h, 1, 1);
+    }
+  }
+
+  function animate(){
+    ctx.clearRect(0, 0, w, h);
+
+    ribbon("rgba(79,141,255,0.05)", "rgba(79,141,255,0.78)", 0, 55, 95, 0);
+    ribbon("rgba(255,215,106,0.05)", "rgba(255,195,65,0.72)", Math.PI, 48, 85, 6);
+
+    grain();
+    t += 0.01;
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+})();
 </script>
 
 </body>
