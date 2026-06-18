@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>About WITHX Innovations</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
 *{
   margin:0;
@@ -58,7 +59,18 @@ body::before{
   50%{transform:translateY(-24px) translateX(14px)}
 }
 
-.top-navbar{position:fixed;top:0;left:0;width:100%;height:88px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:#0b0d10;color:#fff;z-index:3000}.nav-left,.nav-right{display:flex;align-items:center;gap:34px}.brand{display:flex;align-items:center;text-decoration:none}.brand-logo-box{height:54px;min-width:76px;padding:8px 14px;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:14px;box-shadow:0 8px 22px rgba(0,0,0,.22)}.brand-logo-box img{height:38px;width:auto;display:block;object-fit:contain}.nav-links{display:flex;align-items:center;gap:30px}.top-navbar a{color:#fff;text-decoration:none;font-size:16px;font-weight:600;transition:.25s}.top-navbar a:hover,.top-navbar a.active{color:#38bdf8}.ask-btn{padding:14px 26px;border:1px solid #8b5cf6;border-radius:999px;background:#111827}.ask-btn:hover{box-shadow:0 0 24px rgba(56,189,248,.24)}.menu-btn{display:none;background:none;border:none;color:#fff;font-size:30px}.mobile-menu{position:fixed;top:88px;left:0;width:100%;background:#0b0d10;display:none;flex-direction:column;z-index:5000}.mobile-menu a{padding:18px 24px;text-decoration:none;color:#fff;border-bottom:1px solid rgba(255,255,255,.08);font-weight:600}.mobile-menu.show{display:flex}
+.top-navbar{position:fixed;top:0;left:0;width:100%;height:88px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:#0b0d10;color:#fff;z-index:3000}.nav-left,.nav-right{display:flex;align-items:center;gap:34px}.brand{display:flex;align-items:center;text-decoration:none}.brand-logo-box{height:54px;min-width:76px;padding:8px 14px;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:14px;box-shadow:0 8px 22px rgba(0,0,0,.22)}.brand-logo-box img{height:38px;width:auto;display:block;object-fit:contain}.nav-links{display:flex;align-items:center;gap:30px}.top-navbar a{color:#fff;text-decoration:none;font-size:16px;font-weight:600;transition:.25s}.top-navbar a:hover,.top-navbar a.active{color:#000000}.ask-btn{padding:14px 26px;border:1px solid #8b5cf6;border-radius:999px;background:#111827}.ask-btn:hover{box-shadow:0 0 24px rgba(56,189,248,.24)}
+.menu-btn{
+  display:none;
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:32px;
+  cursor:pointer;
+}
+.mobile-menu{position:fixed;top:88px;left:0;width:100%;background:#0b0d10;display:none;flex-direction:column;z-index:5000}
+.mobile-menu a{padding:18px 24px;text-decoration:none;color:#fff;border-bottom:1px solid rgba(255,255,255,.08);font-weight:600}
+.mobile-menu.show{display:flex}
 
 .hero{
   min-height:100vh;
@@ -70,12 +82,16 @@ body::before{
 }
 .hero-grid{
   width:min(var(--max),100%);
+  min-width:0;
   display:grid;
   grid-template-columns:1.05fr .95fr;
   gap:46px;
   align-items:center;
   position:relative;
   z-index:2;
+}
+.hero-grid > *{
+  min-width:0;
 }
 .hero-copy{
   background:rgba(255,255,255,.72);
@@ -456,11 +472,6 @@ footer{
     flex-direction:column;
     align-items:flex-start;
   }
-  nav div:last-child{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-  }
   nav a{margin-left:0;font-size:.88rem;}
   .hero{padding-top:150px;}
   .hero-copy,
@@ -476,32 +487,176 @@ footer{
     margin-top:14px;
     width:100%;
   }
+  .hero-visual{
+    flex-direction:column;
+    min-height:auto;
+  }
+}
+/* MOBILE NAVBAR */
+
+@media (max-width:768px){
+
+  .top-navbar{
+    padding:0 20px;
+    height:80px;
+    flex-direction:row !important;
+    justify-content:space-between !important;
+    align-items:center !important;
+  }
+
+  .nav-links{
+    display:none !important;
+  }
+
+  .ask-btn,
+  .nav-right > a:not(.menu-btn){
+    display:none !important;
+  }
+
+  .menu-btn{
+    display:block !important;
+    position:absolute;
+    right:20px;
+    top:50%;
+    transform:translateY(-50%);
+  }
+
+  .mobile-menu{
+    position:fixed;
+    top:80px;
+    left:0;
+    width:100%;
+    background:#0b0d10;
+    display:none !important;
+    flex-direction:column;
+    z-index:5000;
+  }
+
+  .mobile-menu.show{
+    display:flex !important;
+  }
+
+  .mobile-menu a{
+    padding:18px 24px;
+    color:#fff;
+    text-decoration:none;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    font-weight:600;
+  }
+}
+.ask-btn,
+.nav-right > a:not(.menu-btn){
+ 
+
+  .mobile-menu{
+    position:fixed;
+    top:80px;
+    left:0;
+    width:100%;
+    background:#0b0d10;
+    display:none !important;
+    flex-direction:column;
+    z-index:5000;
+  }
+
+  .mobile-menu.show{
+    display:flex !important;
+  }
+
+  .mobile-menu a{
+    padding:18px 24px;
+    color:#fff;
+    text-decoration:none;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    font-weight:600;
+  }
+}
+.footer{
+  background:#0f172a;
+  color:#fff;
+  padding:70px 8% 25px;
+  margin-top:80px;
+  text-align:left;
+  border-top:1px solid rgba(255,255,255,.08);
+  position:relative;
+  z-index:2;
 }
 
-@media (max-width: 720px){
-  nav{
-    padding:14px 18px;
-    gap:10px;
-    flex-direction:column;
-    align-items:flex-start;
-  }
-  nav div:last-child{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-  }
-  nav a{margin-left:0;font-size:.88rem;}
-  .hero{padding-top:150px;}
-  .hero-copy,
-  .story-block,
-  .mission-card,
-  .founder-card{padding:24px 20px;}
-  .values-grid{grid-template-columns:1fr;}
-  .float-card{
-    position:relative;
-    inset:auto;
-    margin-top:14px;
-    width:100%;
+.footer-container{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1.4fr;
+  gap:50px;
+}
+
+.footer-box h3{
+  font-size:28px;
+  font-weight:800;
+  margin-bottom:15px;
+}
+
+.footer-box h4{
+  font-size:18px;
+  margin-bottom:20px;
+}
+
+.footer-box p{
+  color:#cbd5e1;
+  line-height:1.8;
+}
+
+.footer-links,
+.footer-contact{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.footer-links a,
+.footer-contact a{
+  color:#cbd5e1;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.footer-links a:hover,
+.footer-contact a:hover{
+  color:#38bdf8;
+}
+
+.social-links{
+  display:flex;
+  gap:12px;
+  margin-top:15px;
+  flex-wrap:wrap;
+}
+
+.social-links a{
+  padding:10px 16px;
+  border-radius:999px;
+  background:#1e293b;
+  font-weight:600;
+}
+
+.linkedin{color:#60a5fa !important;}
+.instagram{color:#fb7185 !important;}
+.youtube{color:#f87171 !important;}
+
+.footer-bottom{
+  max-width:1200px;
+  margin:40px auto 0;
+  padding-top:20px;
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,.1);
+  color:#94a3b8;
+  font-size:14px;
+}
+
+@media(max-width:900px){
+  .footer-container{
+    grid-template-columns:1fr;
+    gap:35px;
   }
 }
 </style>
@@ -513,12 +668,40 @@ footer{
 <div class="orb orb3"></div>
 
 <nav class="top-navbar">
+
   <div class="nav-left">
-    <a class="brand" href="index.html" aria-label="WITHX Home"><span class="brand-logo-box"><img src="https://i.ibb.co/5gCTxNtx/Whats-App-Image-2026-06-09-at-12-19-38-PM.jpg" alt="WITHX Logo"></span></a>
-    <div class="nav-links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="products.html" class="active">Products</a><a href="projects.html">Projects</a><a href="research.html">Research</a><a href="contact.html">Contact</a></div>
+    <a class="brand" href="index.html">
+      <span class="brand-logo-box">
+        <img src="https://i.ibb.co/5gCTxNtx/Whats-App-Image-2026-06-09-at-12-19-38-PM.jpg" alt="WITHX Logo">
+      </span>
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="products.html">Products</a>
+      <a href="projects.html">Projects</a>
+      <a href="research.html">Research</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </div>
-  <div class="nav-right"><button id="menuBtn" class="menu-btn">☰</button><a class="ask-btn" href="contact.html">Ask WITHX</a><a href="about.html">About</a></div>
+
+  <div class="nav-right">
+    <button id="menuBtn" class="menu-btn">☰</button>
+    <a class="ask-btn" href="contact.html">Ask WITHX</a>
+    <a href="about.html">About</a>
+  </div>
+
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="products.html">Products</a>
+  <a href="projects.html">Projects</a>
+  <a href="research.html">Research</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</div>
 
 <section class="hero show">
   <div class="hero-grid">
@@ -636,20 +819,84 @@ footer{
   </div>
 </section>
 
-<footer>
-  © 2026 WITHX Innovations Private Limited · About Page
-</footer>
-
 <script>
-const sections = document.querySelectorAll('section');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-    }
-  });
-}, { threshold: 0.14 });
-sections.forEach((section) => observer.observe(section));
+document.addEventListener("DOMContentLoaded", function() {
+
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    menuBtn.onclick = function() {
+        mobileMenu.classList.toggle("show");
+    };
+
+    document.querySelectorAll('#mobileMenu a').forEach(function(a){
+        a.addEventListener('click', function(){
+            mobileMenu.classList.remove('show');
+        });
+    });
+
+    const sections = document.querySelectorAll('section');
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    }, { threshold: 0.15 });
+    sections.forEach((section) => sectionObserver.observe(section));
+
+});
 </script>
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <div class="footer-box">
+      <h3>WITHX INNOVATIONS</h3>
+      <p>
+        WITHX Innovations Private Limited is an engineering-driven company
+        focused on research &amp; development, manufacturing solutions,
+        industrial design, product innovation and advanced technology development.
+      </p>
+    </div>
+
+    <div class="footer-box">
+      <h4>Quick Links</h4>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="services.html">Services</a>
+        <a href="products.html">Products</a>
+        <a href="projects.html">Projects</a>
+        <a href="research.html">Research</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+
+    <div class="footer-box">
+      <h4>Contact</h4>
+      <div class="footer-contact">
+        <span>📍 EDF MITAoE, Dehu Phata, Alandi (D), Pune, Maharashtra</span>
+        <span>🏢 WITHX Innovations Pvt. Ltd.</span>
+
+        <a href="mailto:withx.innovations@gmail.com">
+          ✉ withx.innovations@gmail.com
+        </a>
+
+        <div class="social-links">
+          <a class="linkedin" href="https://www.linkedin.com/company/withx-innovations/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="instagram" href="https://www.instagram.com/withx.in" target="_blank" rel="noopener">Instagram</a>
+          <a class="youtube" href="https://youtube.com/@withxinnovation" target="_blank" rel="noopener">YouTube</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    ©️ 2026 WITHX Innovations Private Limited. All Rights Reserved.
+  </div>
+
+</footer>
 </body>
 </html>
