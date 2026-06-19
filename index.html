@@ -1349,6 +1349,9 @@ min-height:100% !important;
 
 .feature-card .card-image{
 height:300px !important;
+object-fit:contain !important;
+background:#f3f4f6;
+padding:14px;
 }
 
 .product-stack{
@@ -1436,9 +1439,97 @@ height:170px !important;
 
 .feature-card .card-image{
 height:210px !important;
+object-fit:contain !important;
+background:#f3f4f6;
+padding:10px;
 }
 }
 /* ===== END FINAL WELL-MANAGED CARD LAYOUT PATCH ===== */
+
+/* ===== FEATURE + STACK PRODUCT LAYOUT PATCH ===== */
+.product-grid-feature{
+display:grid !important;
+grid-template-columns:1.1fr 1.4fr !important;
+gap:28px !important;
+align-items:stretch !important;
+}
+.product-grid-feature .feature-card{
+display:flex !important;
+flex-direction:column !important;
+height:100% !important;
+min-height:0 !important;
+padding:24px !important;
+}
+.product-grid-feature .feature-card .card-image{
+width:100% !important;
+height:auto !important;
+max-height:420px !important;
+object-fit:contain !important;
+object-position:center !important;
+background:#f3f4f6;
+border-radius:18px !important;
+padding:16px;
+margin-bottom:18px !important;
+flex-shrink:0;
+}
+.product-grid-feature .feature-card span{
+flex-grow:1;
+}
+.product-grid-feature .feature-card .btn{
+margin-top:14px !important;
+align-self:flex-start;
+}
+
+.product-grid-feature .product-stack{
+display:grid !important;
+grid-template-columns:repeat(3, minmax(0,1fr)) !important;
+gap:22px !important;
+align-items:stretch !important;
+}
+.product-grid-feature .product-stack .card{
+display:flex !important;
+flex-direction:column !important;
+height:100% !important;
+padding:20px !important;
+}
+.product-grid-feature .product-stack .card-image{
+width:100% !important;
+height:160px !important;
+object-fit:cover !important;
+border-radius:16px !important;
+margin-bottom:14px !important;
+}
+.product-grid-feature .product-stack .card strong{
+display:block;
+margin-bottom:8px;
+}
+.product-grid-feature .product-stack .card span{
+color:var(--muted);
+flex-grow:1;
+display:-webkit-box;
+-webkit-line-clamp:4;
+-webkit-box-orient:vertical;
+overflow:hidden;
+}
+.product-grid-feature .product-stack .card .btn{
+margin-top:14px !important;
+align-self:flex-start;
+}
+
+@media(max-width:1100px){
+.product-grid-feature{
+grid-template-columns:1fr !important;
+}
+.product-grid-feature .product-stack{
+grid-template-columns:repeat(3, minmax(0,1fr)) !important;
+}
+}
+@media(max-width:700px){
+.product-grid-feature .product-stack{
+grid-template-columns:1fr !important;
+}
+}
+/* ===== END FEATURE + STACK PRODUCT LAYOUT PATCH ===== */
 
 </style>
 </head>
@@ -1516,9 +1607,9 @@ Get Started
 <div class="title">Featured Products</div>
 <p>A quick look at key products from the WITHX portfolio.</p>
 </div>
-<div class="product-showcase">
+<div class="product-showcase product-grid-feature">
 <div class="card feature-card" onclick="window.location.href='products.html'" style="cursor:pointer;">
-<img class="card-image" src="https://i.ibb.co/218RTVxk/Whats-App-Image-2026-06-11-at-1-56-19-PM.jpg" alt="Utensil cleaner" style="height:320px;">
+<img class="card-image" src="https://i.ibb.co/218RTVxk/Whats-App-Image-2026-06-11-at-1-56-19-PM.jpg" alt="Utensil cleaner">
 <strong style="font-size:1.35rem;display:block;margin-bottom:10px;">Multifunctional Utensil Cleaner</strong>
 <span style="opacity:.78;line-height:1.8;display:block;">A utility-focused concept designed to improve everyday cleaning efficiency with a practical engineering approach.</span>
 <a href="products.html" class="btn" style="margin-top:12px; display:inline-block; text-decoration:none;">
@@ -1528,24 +1619,24 @@ View Product
 <div class="product-stack">
 <div class="card" onclick="window.location.href='products.html'" style="cursor:pointer;">
 <img class="card-image" src="https://i.ibb.co/S4jMGRr6/Screenshot-2026-06-11-145657.png" alt="Food machine">
-<strong>Wada Maker Machine</strong><br>
+<strong>Wada Maker Machine</strong>
 <span style="opacity:.75;">Consistency and speed focused machine concept.</span>
 <a href="products.html" class="btn" style="margin-top:12px; display:inline-block; text-decoration:none;">
 View Product
 </a>
 </div>
 <div class="card" onclick="window.location.href='products.html'" style="cursor:pointer;">
-<img class="card-image" src="https://i.ibb.co/LhrVMCLk/Screenshot-2026-06-11-143159.png">
-<strong>Lead Frame Manufacturing</strong><br>
-<span style="opacity:.75;">A Lead Frame is a thin metal framework used in semiconductor packaging to support a semiconductor chip (die) and provide electrical connections between the chip and the external circuit. It acts as the backbone of many electronic components such as ICs, transistors, LEDs, sensors, and power devices.</span>
+<img class="card-image" src="https://i.ibb.co/LhrVMCLk/Screenshot-2026-06-11-143159.png" alt="Lead frame">
+<strong>Lead Frame Manufacturing</strong>
+<span style="opacity:.75;">A Lead Frame is a thin metal framework used in semiconductor packaging to support a semiconductor chip and provide electrical connections to the external circuit.</span>
 <a href="products.html" class="btn" style="margin-top:12px; display:inline-block; text-decoration:none;">
 View Product
 </a>
 </div>
 <div class="card" onclick="window.location.href='products.html'" style="cursor:pointer;">
-<img class="card-image" src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1200&q=80" alt="Helmet locking system">
-<strong> Defence Drone camera </strong><br>
-<span style="opacity:.75;">The WITHX Drone Surveillance System is designed to provide real-time aerial monitoring, reconnaissance, and situational awareness. The platform supports rapid deployment and efficient area observation for security, inspection, and surveillance applications.</span>
+<img class="card-image" src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=1200&q=80" alt="Defence drone camera">
+<strong>Defence Drone Camera</strong>
+<span style="opacity:.75;">Real-time aerial monitoring, reconnaissance, and situational awareness for security and inspection applications.</span>
 <a href="products.html" class="btn" style="margin-top:12px; display:inline-block; text-decoration:none;">
 View Product
 </a>
